@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xbz-Ju-ADz">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="dx0-K1-VI5">
+            <objects>
+                <navigationController id="xbz-Ju-ADz" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uSg-xO-R5r">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="KEW-Yq-jCx" kind="relationship" relationship="rootViewController" id="Ymo-QB-UB0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EMY-v5-5Fz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-780" y="203"/>
+        </scene>
+        <!--Examle1-->
+        <scene sceneID="Y12-3k-cnj">
+            <objects>
+                <viewController id="KEW-Yq-jCx" customClass="Example1Vc" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IIr-M7-Ip4"/>
+                        <viewControllerLayoutGuide type="bottom" id="ikY-kt-NsT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FFc-Xw-Inn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMg-uu-xlS">
+                                <rect key="frame" x="103" y="318" width="169" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.27303067853743268" blue="0.28992793146417251" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="点我加载／改变模型数据">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="updateModelData:" destination="KEW-Yq-jCx" eventType="touchUpInside" id="4Jx-PP-PKh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Examle1" id="DQw-2Y-h7u"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oh3-ew-ecd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="146" y="101"/>
+        </scene>
+        <!--Example2VC-->
+        <scene sceneID="I0X-aj-g0P">
+            <objects>
+                <viewController storyboardIdentifier="Example2VC" id="EGf-1p-lcR" customClass="Example2VC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Q1I-Un-TAf"/>
+                        <viewControllerLayoutGuide type="bottom" id="2Eq-8Y-r85"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vyu-IE-yrt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="f9r-YR-3I1">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="f9r-YR-3I1" firstAttribute="leading" secondItem="vyu-IE-yrt" secondAttribute="leading" id="7k0-6O-geV"/>
+                            <constraint firstItem="f9r-YR-3I1" firstAttribute="top" secondItem="vyu-IE-yrt" secondAttribute="top" id="KSM-Jd-ZCC"/>
+                            <constraint firstItem="2Eq-8Y-r85" firstAttribute="top" secondItem="f9r-YR-3I1" secondAttribute="bottom" id="ajB-Pg-bBL"/>
+                            <constraint firstAttribute="trailing" secondItem="f9r-YR-3I1" secondAttribute="trailing" id="fKy-m4-U4B"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="f9r-YR-3I1" id="yaA-4b-nzj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WaM-Sy-vKW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="774" y="54"/>
+        </scene>
+    </scenes>
+</document>
