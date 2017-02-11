@@ -21,13 +21,17 @@
 @property (nonatomic, weak) FirstView *firstView;
 @property (nonatomic, strong) FirstViewManager *viewManager;
 @property (nonatomic, strong) FirstViewModel *viewModel;
+@property (weak, nonatomic) IBOutlet UIButton *btn;
 
 @end
 
 @implementation Example1Vc
 
+#pragma mark - Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setupUI];
     
     /// 设置firstView的事件处理者代理为viewManager  (代理的方式)
     [self.firstView xy_viewWithViewManager:self.viewManager];
@@ -59,6 +63,24 @@
     
 }
 
+
+#pragma mark - 初始化控件
+- (void)setupUI {
+    _btn.layer.cornerRadius = 10;
+    _btn.layer.masksToBounds = YES;
+}
+
+
+
+#pragma mark - Events
+- (IBAction)updateModelData:(id)sender {
+    
+    /// 根据viewModel配置view
+    [self.firstView xy_configViewWithViewModel:self.viewModel];
+}
+
+
+#pragma mark - lazy
 - (FirstView *)firstView {
     if (_firstView == nil) {
         FirstView *view = [FirstView sui_loadInstanceFromNib];
@@ -81,11 +103,6 @@
         _viewModel = [FirstViewModel new];
     }
     return _viewModel;
-}
-- (IBAction)updateModelData:(id)sender {
-    
-    /// 根据viewModel配置view
-    [self.firstView xy_configViewWithViewModel:self.viewModel];
 }
 
 @end

@@ -10,14 +10,14 @@
 #import "SecondViewModel.h"
 #import "SecondTableView_ViewModel.h"
 #import "SUIUtils.h"
-#import "XYLoadingView.h"
+#import "UIScrollView+XYLoading.h"
 
 @interface Example2VC ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) SecondTableView_ViewModel *tableView_ViewModel;
 @property (nonatomic, strong) SecondViewModel *vm;
-@property (nonatomic, strong) XYLoadingView *loadingView;
+//@property (nonatomic, strong) XYLoadingView *loadingView;
 
 @end
 
@@ -27,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"Example2VC";
     [self initTableView];
 }
 
@@ -35,14 +36,23 @@
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    /// 传递tableView给tableView_ViewModel，将tableView的代理和数据源转交给tableView_ViewModel
+    /// 传递tableView给tableView_ViewModel，将tableView的代理和数据源转交给tableView_ViewModel内部处理
     [self.tableView_ViewModel handleWithTableView:self.tableView];
     
+    [self loadDataFromNetwork];
+    
+    /// 当网络加载失败时，点击按钮可重新加载
+    [self.tableView reloadBlock:^{
+        [self loadDataFromNetwork];
+    }];
+}
+
+- (void)loadDataFromNetwork {
     uWeakSelf
-    [self.loadingView loading];
+    [self.tableView.loadingView loading];
     [self.vm xy_viewModelWithProgress:nil success:^(id responseObject) {
         
-        [weakSelf.loadingView loadFinished];
+        [weakSelf.tableView.loadingView loadFinished];
         /// 将数据传给tableView_ViewModel，由其内部处理
         [weakSelf.tableView_ViewModel getModelListBlock:^NSArray *{
             return responseObject;
@@ -52,26 +62,14 @@
         }];
     } failure:^(NSError *error) {
         NSLog(@"%@", error.localizedDescription);
-  
-        [weakSelf.loadingView loadFailure];
+        
+        [weakSelf.tableView.loadingView loadFailure];
     }];
-}
 
+}
 
 
 #pragma mark - lazy
-- (XYLoadingView *)loadingView {
-    if (_loadingView == nil) {
-        
-        XYLoadingView *loadingView = [XYLoadingView new];
-        loadingView.frame = self.view.bounds;
-        [self.view addSubview:(_loadingView = loadingView)];
-        _loadingView = loadingView;
-    
-    }
-    return _loadingView;
-}
-
 - (SecondTableView_ViewModel *)tableView_ViewModel {
     if (_tableView_ViewModel == nil) {
         _tableView_ViewModel = [SecondTableView_ViewModel new];

@@ -25,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="-780" y="203"/>
         </scene>
-        <!--Examle1-->
+        <!--Example1-->
         <scene sceneID="Y12-3k-cnj">
             <objects>
                 <viewController id="KEW-Yq-jCx" customClass="Example1Vc" sceneMemberID="viewController">
@@ -37,10 +37,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMg-uu-xlS">
-                                <rect key="frame" x="103" y="318" width="169" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bMg-uu-xlS">
+                                <rect key="frame" x="77.5" y="318" width="220" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.27303067853743268" blue="0.28992793146417251" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="SAA-En-zSW"/>
+                                </constraints>
                                 <state key="normal" title="点我加载／改变模型数据">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -50,8 +52,15 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bMg-uu-xlS" firstAttribute="centerX" secondItem="FFc-Xw-Inn" secondAttribute="centerX" id="H9C-Wf-cAj"/>
+                            <constraint firstItem="bMg-uu-xlS" firstAttribute="centerY" secondItem="FFc-Xw-Inn" secondAttribute="centerY" id="fNI-3O-hG0"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Examle1" id="DQw-2Y-h7u"/>
+                    <navigationItem key="navigationItem" title="Example1" id="DQw-2Y-h7u"/>
+                    <connections>
+                        <outlet property="btn" destination="bMg-uu-xlS" id="eks-rx-2W8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oh3-ew-ecd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -89,6 +98,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WaM-Sy-vKW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="774" y="54"/>
+        </scene>
+        <!--Example3VC-->
+        <scene sceneID="ZhV-d0-UxM">
+            <objects>
+                <viewController storyboardIdentifier="Example3VC" id="S3B-JM-0dt" customClass="Example3VC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mTg-yf-kJ2"/>
+                        <viewControllerLayoutGuide type="bottom" id="WZW-8i-FEf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="I0G-my-KN2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nsX-VT-ueS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nsX-VT-ueS" firstAttribute="top" secondItem="I0G-my-KN2" secondAttribute="top" id="4X5-6W-DQt"/>
+                            <constraint firstItem="WZW-8i-FEf" firstAttribute="top" secondItem="nsX-VT-ueS" secondAttribute="bottom" id="Kxi-48-oKa"/>
+                            <constraint firstItem="nsX-VT-ueS" firstAttribute="leading" secondItem="I0G-my-KN2" secondAttribute="leading" id="Pfv-LC-HfH"/>
+                            <constraint firstAttribute="trailing" secondItem="nsX-VT-ueS" secondAttribute="trailing" id="nMo-Se-9ev"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fX4-nb-gWP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1498" y="23"/>
         </scene>
     </scenes>
 </document>

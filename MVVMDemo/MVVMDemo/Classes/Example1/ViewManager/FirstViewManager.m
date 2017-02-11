@@ -20,7 +20,11 @@
 - (void)xy_view:(__kindof UIView *)view events:(NSDictionary *)events {
     NSLog(@"events:--%@", events);
     if ([events.allKeys containsObject:@"jump"]) {
+        
         UIViewController *vc = [UIViewController sui_viewControllerWithStoryboard:nil identifier:events[@"jump"]];
+        if (vc == nil) {
+            vc = [[UIViewController alloc] init];
+        }
         [view.sui_currentVC.navigationController pushViewController:vc animated:YES];
     }
 }

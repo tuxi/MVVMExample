@@ -10,8 +10,10 @@
 
 @interface XYLoadingView : UIView
 
-@property (nonatomic, weak, readonly) UILabel *label;
-@property (nonatomic, weak, readonly) UIActivityIndicatorView *indicatorView;
+/// 加载时显示的文字
+@property (nonatomic, copy) NSString *loadingText;
+
+@property (nonatomic, copy) void(^reloadBlock)();
 
 /// 正在加载中
 - (void)loading;
@@ -19,5 +21,7 @@
 - (void)loadFinished;
 /// 加载失败
 - (void)loadFailure;
+
+
 
 @end

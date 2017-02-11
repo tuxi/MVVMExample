@@ -12,56 +12,72 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FirstView">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="177"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="217"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWh-JH-TGR">
-                    <rect key="frame" x="0.0" y="0.0" width="187.5" height="80"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="51.5"/>
                     <color key="backgroundColor" red="0.1313181628" green="0.6738150168" blue="0.48875314600000003" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="80" id="J3t-15-hQK"/>
-                    </constraints>
-                    <state key="normal" title="点击监听事件改变"/>
+                    <state key="normal" title="点击监听事件改变">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="testBtnClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="pOD-fR-cjh"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这里是数据展示区域" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKr-D3-uCg">
+                    <rect key="frame" x="0.0" y="163" width="375" height="51"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZH-q4-Mip">
+                    <rect key="frame" x="0.0" y="108.5" width="375" height="51.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="进入帖子">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="jumpToTopicVc:" destination="iN0-l3-epB" eventType="touchUpInside" id="kLn-he-a70"/>
+                    </connections>
+                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uml-Ia-b3U">
-                    <rect key="frame" x="187.5" y="0.0" width="187.5" height="80"/>
+                    <rect key="frame" x="0.0" y="54.5" width="375" height="51"/>
                     <color key="backgroundColor" red="0.80000001190000003" green="0.40000000600000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="80" id="naV-B6-3Q7"/>
-                    </constraints>
-                    <state key="normal" title="点击跳转到其他控制器"/>
+                    <state key="normal" title="点击跳转到其他控制器">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                     <connections>
                         <action selector="jumpToOtherVc:" destination="iN0-l3-epB" eventType="touchUpInside" id="b0K-7p-M63"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我是显示模型数据的" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKr-D3-uCg">
-                    <rect key="frame" x="109.5" y="80" width="156" height="97"/>
-                    <color key="backgroundColor" red="1" green="0.27303067850000001" blue="0.28992793150000001" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
-                <constraint firstItem="sKr-D3-uCg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="1yY-rR-9KP"/>
-                <constraint firstItem="sKr-D3-uCg" firstAttribute="top" secondItem="uml-Ia-b3U" secondAttribute="bottom" id="398-tU-BpD"/>
-                <constraint firstItem="NWh-JH-TGR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="84r-eW-DPp"/>
-                <constraint firstAttribute="bottom" secondItem="sKr-D3-uCg" secondAttribute="bottom" id="8pn-Qu-zaG"/>
-                <constraint firstItem="uml-Ia-b3U" firstAttribute="leading" secondItem="NWh-JH-TGR" secondAttribute="trailing" id="ToS-0k-SHt"/>
-                <constraint firstItem="NWh-JH-TGR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Tog-9H-F4K"/>
-                <constraint firstAttribute="trailing" secondItem="uml-Ia-b3U" secondAttribute="trailing" id="XYH-7z-1Tn"/>
-                <constraint firstItem="uml-Ia-b3U" firstAttribute="width" secondItem="NWh-JH-TGR" secondAttribute="width" id="rSr-zr-wBH"/>
-                <constraint firstItem="uml-Ia-b3U" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ubI-EV-ttG"/>
+                <constraint firstAttribute="bottom" secondItem="sKr-D3-uCg" secondAttribute="bottom" constant="3" id="1om-qD-P3h"/>
+                <constraint firstItem="QZH-q4-Mip" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1qY-wV-tWW"/>
+                <constraint firstItem="sKr-D3-uCg" firstAttribute="top" secondItem="QZH-q4-Mip" secondAttribute="bottom" constant="3" id="3VM-UF-m8i"/>
+                <constraint firstItem="uml-Ia-b3U" firstAttribute="height" secondItem="NWh-JH-TGR" secondAttribute="height" id="CQy-xL-nFb"/>
+                <constraint firstItem="NWh-JH-TGR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="DOY-dx-xR0"/>
+                <constraint firstItem="uml-Ia-b3U" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="J9J-hi-maQ"/>
+                <constraint firstItem="sKr-D3-uCg" firstAttribute="height" secondItem="NWh-JH-TGR" secondAttribute="height" id="LUy-dU-gHn"/>
+                <constraint firstAttribute="trailing" secondItem="uml-Ia-b3U" secondAttribute="trailing" id="MiK-0H-D97"/>
+                <constraint firstItem="NWh-JH-TGR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="NtM-fn-3Pv"/>
+                <constraint firstItem="sKr-D3-uCg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="QEM-te-SAY"/>
+                <constraint firstItem="uml-Ia-b3U" firstAttribute="top" secondItem="NWh-JH-TGR" secondAttribute="bottom" constant="3" id="Vpi-Yr-pIV"/>
+                <constraint firstAttribute="trailing" secondItem="NWh-JH-TGR" secondAttribute="trailing" id="VtM-jH-3fL"/>
+                <constraint firstAttribute="trailing" secondItem="sKr-D3-uCg" secondAttribute="trailing" id="XBF-U7-99a"/>
+                <constraint firstItem="QZH-q4-Mip" firstAttribute="height" secondItem="NWh-JH-TGR" secondAttribute="height" id="t39-E4-lSY"/>
+                <constraint firstAttribute="trailing" secondItem="QZH-q4-Mip" secondAttribute="trailing" id="tdf-8q-Urg"/>
+                <constraint firstItem="QZH-q4-Mip" firstAttribute="top" secondItem="uml-Ia-b3U" secondAttribute="bottom" constant="3" id="uNF-MY-qGy"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="testLabel" destination="sKr-D3-uCg" id="k5w-bR-Vcc"/>
             </connections>
-            <point key="canvasLocation" x="34.5" y="-191.5"/>
+            <point key="canvasLocation" x="34.5" y="-171.5"/>
         </view>
     </objects>
 </document>

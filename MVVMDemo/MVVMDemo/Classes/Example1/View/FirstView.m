@@ -35,6 +35,13 @@
         [self.viewDelete xy_view:self events:@{@"jump": @"Example2VC"}];
     }
 }
+- (IBAction)jumpToTopicVc:(id)sender {
+    
+    /// 传递事件
+    if (self.viewDelete && [self.viewDelete respondsToSelector:@selector(xy_view:events:)]) {
+        [self.viewDelete xy_view:self events:@{@"jump": @"Example3VC"}];
+    }
+}
 
 - (void)xy_configViewWithViewModel:(id<XYViewModelProtocol>)vm {
     
@@ -42,6 +49,7 @@
     [vm xy_viewModelWithModelBlcok:^(id model) {
         FirstModel *m = (FirstModel *)model;
         self.testLabel.text = m.title;
+        self.testLabel.backgroundColor = [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0];
     }];
 }
 //- (void):(id<XYViewModelProtocol>)viewModel {

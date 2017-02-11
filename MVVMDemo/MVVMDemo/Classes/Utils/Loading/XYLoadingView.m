@@ -9,12 +9,17 @@
 #import "XYLoadingView.h"
 
 static CGFloat const indicatorViewW = 30;
+static CGFloat const reloadBtnW = 160;
+static CGFloat const reloadBtnH = 30;
 
 @interface XYLoadingView ()
 
+/// 显示加载状态label
 @property (nonatomic, weak) UILabel *label;
+/// 菊花
 @property (nonatomic, weak) UIActivityIndicatorView *indicatorView;
-@property (nonatomic, copy) NSString *loadingText;
+/// 重新加载按钮  -- 当加载失败时才会显示  -- 用户可同block设置回调
+@property (nonatomic, weak) UIButton *reloadBtn;
 
 @end
 
@@ -25,21 +30,26 @@ static CGFloat const indicatorViewW = 30;
 #pragma mark - public
 - (void)loading {
     self.hidden = NO;
-    self.loadingText = @"加载中...";
+    self.reloadBtn.hidden = YES;
+    self.loadingText = @"正在加载";
     [self.indicatorView startAnimating];
 }
 
 - (void)loadFinished {
     self.hidden = YES;
+    self.reloadBtn.hidden = YES;
     [self.indicatorView stopAnimating];
     [self updateFrame];
+    
 }
 
 - (void)loadFailure {
-    self.loadingText = @"加载失败...";
+    self.loadingText = @"加载失败";
+    self.reloadBtn.hidden = NO;
     self.hidden = NO;
     [self.indicatorView stopAnimating];
     [self updateFrame];
+    NSLog(@"%@", self.reloadBtn);
 }
 
 #pragma mark - lazy
@@ -66,6 +76,28 @@ static CGFloat const indicatorViewW = 30;
     return _indicatorView;
 }
 
+- (UIButton *)reloadBtn {
+    if (_reloadBtn == nil) {
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [btn setTitle:@"重新加载" forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [btn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+        btn.backgroundColor = [UIColor blackColor];
+        btn.hidden = YES;
+        [btn addTarget:self action:@selector(reloadBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:btn];
+        _reloadBtn = btn;
+    }
+    return _reloadBtn;
+}
+
+
+#pragma mark - Events
+- (void)reloadBtnClick:(UIButton *)btn {
+    if (self.reloadBlock) {
+        self.reloadBlock();
+    }
+}
 
 - (void)setLoadingText:(NSString *)loadingText {
     _loadingText = loadingText;
@@ -96,6 +128,8 @@ static CGFloat const indicatorViewW = 30;
     CGPoint indicatorViewCenter = self.indicatorView.center;
     indicatorViewCenter.y = self.label.center.y;
     self.indicatorView.center = indicatorViewCenter;
+    
+    self.reloadBtn.frame = CGRectMake((self.frame.size.width - reloadBtnW) * 0.5, CGRectGetMaxY(self.label.frame)+10, reloadBtnW, reloadBtnH);
 }
 
 - (void)dealloc {
