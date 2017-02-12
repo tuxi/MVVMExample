@@ -20,7 +20,7 @@
 @property (nonatomic, strong) ThirdTableViewModel *tableViewModel;
 @property (nonatomic, strong) ThirdViewModel *viewModel;
 @property (nonatomic, assign) NSInteger currentPage;
-
+@property (nonatomic, strong) NSMutableArray *loadingImages;
 @end
 
 @implementation Example3VC
@@ -29,6 +29,17 @@
     
     self.title = @"Example3VC";
     [self initTableView];
+}
+
+- (NSMutableArray<UIImage *> *)loadingImages {
+    if (_loadingImages == nil) {
+        _loadingImages = [NSMutableArray arrayWithCapacity:24];
+        for (NSInteger i = 0; i < 24; ++i) {
+            UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"loading%ld", i+1]];
+            [_loadingImages addObject:image];
+        }
+    }
+    return _loadingImages;
 }
 
 /// 对tableView进行初始化操作
@@ -57,6 +68,8 @@
         weakSelf.currentPage++;
         [weakSelf loadDataFromNetworkWithPage:weakSelf.currentPage];
     }];
+    
+    self.tableView.loadingView.loadingImgs = self.loadingImages;
     
 }
 

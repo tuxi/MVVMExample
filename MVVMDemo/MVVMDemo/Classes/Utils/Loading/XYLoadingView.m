@@ -20,7 +20,8 @@ static CGFloat const reloadBtnH = 30;
 @property (nonatomic, weak) UIActivityIndicatorView *indicatorView;
 /// 重新加载按钮  -- 当加载失败时才会显示  -- 用户可同block设置回调
 @property (nonatomic, weak) UIButton *reloadBtn;
-
+/// 显示序列帧的视图
+@property (nonatomic, weak) UIImageView *flameAnimationView;
 
 @end
 
@@ -34,6 +35,10 @@ static CGFloat const reloadBtnH = 30;
     self.hidden = NO;
     self.state = XYLoadingStateLoading;
     self.reloadBtn.hidden = YES;
+    if (self.loadingImgs.count) {
+        [self.flameAnimationView startAnimating];
+        return;
+    }
     self.loadingText = @"正在加载";
     [self.indicatorView startAnimating];
 }
@@ -42,18 +47,40 @@ static CGFloat const reloadBtnH = 30;
     self.hidden = YES;
     self.state = XYLoadingStateFinished;
     self.reloadBtn.hidden = YES;
-    [self.indicatorView stopAnimating];
     [self updateFrame];
+    if (self.loadingImgs.count) {
+        [self.flameAnimationView stopAnimating];
+        return;
+    }
+    [self.indicatorView stopAnimating];
+    
 }
 
 - (void)loadFailure {
     self.loadingText = @"加载失败";
     self.reloadBtn.hidden = NO;
     self.hidden = NO;
-    self.state = XYLoadingStateFailure;
-    [self.indicatorView stopAnimating];
     [self updateFrame];
+    self.state = XYLoadingStateFailure;
+    if (self.loadingImgs.count) {
+        [self.flameAnimationView stopAnimating];
+        return;
+    }
+    [self.indicatorView stopAnimating];
+    
+}
 
+- (void)setLoadingImgs:(NSArray<UIImage *> *)loadingImgs {
+    _loadingImgs = loadingImgs;
+    if (self.indicatorView) {
+        [self.indicatorView removeFromSuperview];
+        self.indicatorView = nil;
+    }
+    if (loadingImgs.count) {
+        self.flameAnimationView.animationImages = loadingImgs;
+    } else {
+        self.flameAnimationView.animationImages = @[[UIImage imageNamed:@"Warning_64px"]];
+    }
 }
 
 
@@ -99,6 +126,19 @@ static CGFloat const reloadBtnH = 30;
 }
 
 
+- (UIImageView *)flameAnimationView {
+    if (_flameAnimationView == nil) {
+        UIImageView *imageView = [[UIImageView alloc] init];
+        [self addSubview:imageView];
+        // all frames will execute in 1.75 seconds
+        imageView.animationDuration = 1.0;
+        // repeat the annimation forever
+        imageView.animationRepeatCount = 0;
+        _flameAnimationView = imageView;
+    }
+    return _flameAnimationView;
+}
+
 #pragma mark - Events
 - (void)reloadBtnClick:(UIButton *)btn {
     if (self.reloadBlock) {
@@ -120,22 +160,29 @@ static CGFloat const reloadBtnH = 30;
 - (void)updateFrame {
     
     CGSize size = CGSizeZero;
+    CGFloat selfW = self.frame.size.width;
+    CGFloat selfH = self.frame.size.height;
     if (self.loadingText.length) {
-        size = [self.loadingText boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: self.label.font} context:nil].size;
+        size = [self.loadingText boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: _label.font} context:nil].size;
     }
-    CGRect frame = self.label.frame;
+    CGRect frame = _label.frame;
     frame.size.width = size.width;
     frame.size.height = size.height;
-    frame.origin.x = self.indicatorView.hidden ? (self.frame.size.width - size.width) * 0.5 :(self.frame.size.width - size.width - indicatorViewW) * 0.5;
-    frame.origin.y = (self.frame.size.height - size.height) * 0.5;
-    self.label.frame = frame;
+    frame.origin.x = _indicatorView.hidden ? (selfW - size.width) * 0.5 :(selfW - size.width - indicatorViewW) * 0.5;
+    frame.origin.y = (selfH - size.height) * 0.5;
+    _label.frame = frame;
     
-    self.indicatorView.frame = CGRectMake(CGRectGetMaxX(self.label.frame), 0, indicatorViewW, indicatorViewW);
-    CGPoint indicatorViewCenter = self.indicatorView.center;
-    indicatorViewCenter.y = self.label.center.y;
+    _indicatorView.frame = CGRectMake(CGRectGetMaxX(_label.frame), 0, indicatorViewW, indicatorViewW);
+    CGPoint indicatorViewCenter = _indicatorView.center;
+    indicatorViewCenter.y = _label.center.y;
     self.indicatorView.center = indicatorViewCenter;
     
-    self.reloadBtn.frame = CGRectMake((self.frame.size.width - reloadBtnW) * 0.5, CGRectGetMaxY(self.label.frame)+10, reloadBtnW, reloadBtnH);
+    _reloadBtn.frame = CGRectMake((selfW - reloadBtnW) * 0.5, CGRectGetMaxY(self.label.frame)+10, reloadBtnW, reloadBtnH);
+    
+    CGFloat flameAnimationWH = 60;
+    CGFloat flameAnimationX = (selfW - flameAnimationWH) * 0.5;
+    CGFloat flameAnimationY = (selfH - flameAnimationWH) * 0.5;
+    _flameAnimationView.frame = CGRectMake(flameAnimationX, flameAnimationY, flameAnimationWH, flameAnimationWH);
 }
 
 - (void)dealloc {

@@ -22,7 +22,8 @@ typedef NS_ENUM(NSInteger, XYLoadingState) {
 @property (nonatomic, copy) void(^reloadBlock)();
 /// 当前加载状态
 @property (nonatomic, assign) XYLoadingState state;
-
+/// 正在加载时播放一组图片序列帧，显示此动画时，不显示菊花
+@property (nonatomic, strong) NSArray<UIImage *> *loadingImgs;
 
 /// 正在加载中
 - (void)loading;
