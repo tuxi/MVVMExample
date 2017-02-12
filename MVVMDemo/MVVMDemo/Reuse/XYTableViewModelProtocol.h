@@ -20,4 +20,7 @@
 /// 删除所有数据源
 - (void)removeAllObjctFromDataSource;
 
+/// 根据索引删除数据源中的数据
+- (void)removeObjcetAtIndex:(NSInteger)index;
+
 @end
