@@ -33,7 +33,7 @@
     /// Rewrite these func in SubClass !
 }
 
-+ (CGFloat)xy_getCellHeightWithModel:(id)model indexPath:(NSIndexPath *)indexPath {
+- (CGFloat)xy_getCellHeightWithModel:(id)model indexPath:(NSIndexPath *)indexPath {
     /// Rewrite these func in SubClass !
     if (!model) {
         return 0;     // 没有数据时cell高度为0

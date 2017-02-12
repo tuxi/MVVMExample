@@ -37,6 +37,11 @@ typedef NS_ENUM(NSUInteger, RequestMethod) {
 @property (nonatomic, copy, nonnull) NSString *xy_path;
 
 /**
+ *  请求头 此参数需要设置在requestSerializer中
+ */
+@property (nonatomic, strong, nonnull) NSDictionary *xy_headers;
+
+/**
  *  method
  */
 @property (nonatomic, assign) RequestMethod xy_method;

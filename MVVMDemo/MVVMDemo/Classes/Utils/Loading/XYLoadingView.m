@@ -21,6 +21,7 @@ static CGFloat const reloadBtnH = 30;
 /// 重新加载按钮  -- 当加载失败时才会显示  -- 用户可同block设置回调
 @property (nonatomic, weak) UIButton *reloadBtn;
 
+
 @end
 
 @implementation XYLoadingView
@@ -28,8 +29,10 @@ static CGFloat const reloadBtnH = 30;
 @synthesize loadingText = _loadingText;
 
 #pragma mark - public
+
 - (void)loading {
     self.hidden = NO;
+    self.state = XYLoadingStateLoading;
     self.reloadBtn.hidden = YES;
     self.loadingText = @"正在加载";
     [self.indicatorView startAnimating];
@@ -37,20 +40,22 @@ static CGFloat const reloadBtnH = 30;
 
 - (void)loadFinished {
     self.hidden = YES;
+    self.state = XYLoadingStateFinished;
     self.reloadBtn.hidden = YES;
     [self.indicatorView stopAnimating];
     [self updateFrame];
-    
 }
 
 - (void)loadFailure {
     self.loadingText = @"加载失败";
     self.reloadBtn.hidden = NO;
     self.hidden = NO;
+    self.state = XYLoadingStateFailure;
     [self.indicatorView stopAnimating];
     [self updateFrame];
-    NSLog(@"%@", self.reloadBtn);
+
 }
+
 
 #pragma mark - lazy
 - (UILabel *)label {
@@ -83,6 +88,8 @@ static CGFloat const reloadBtnH = 30;
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [btn.titleLabel setFont:[UIFont systemFontOfSize:14]];
         btn.backgroundColor = [UIColor blackColor];
+        btn.layer.cornerRadius = 8;
+        [btn.layer setMasksToBounds:YES];
         btn.hidden = YES;
         [btn addTarget:self action:@selector(reloadBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btn];
@@ -105,7 +112,6 @@ static CGFloat const reloadBtnH = 30;
 }
 
 - (void)layoutSubviews {
-   
     [super layoutSubviews];
     [self updateFrame];
 }

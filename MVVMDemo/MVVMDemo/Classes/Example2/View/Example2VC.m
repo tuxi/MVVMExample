@@ -10,14 +10,13 @@
 #import "SecondViewModel.h"
 #import "SecondTableView_ViewModel.h"
 #import "SUIUtils.h"
-#import "UIScrollView+XYLoading.h"
+#import "UIView+XYLoading.h"
 
 @interface Example2VC ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) SecondTableView_ViewModel *tableView_ViewModel;
 @property (nonatomic, strong) SecondViewModel *vm;
-//@property (nonatomic, strong) XYLoadingView *loadingView;
 
 @end
 
@@ -37,33 +36,33 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     /// 传递tableView给tableView_ViewModel，将tableView的代理和数据源转交给tableView_ViewModel内部处理
-    [self.tableView_ViewModel handleWithTableView:self.tableView];
+    [self.tableView_ViewModel prepareTableView:self.tableView];
     
     [self loadDataFromNetwork];
     
+    uWeakSelf
     /// 当网络加载失败时，点击按钮可重新加载
     [self.tableView reloadBlock:^{
-        [self loadDataFromNetwork];
+        [weakSelf loadDataFromNetwork];
     }];
 }
 
 - (void)loadDataFromNetwork {
-    uWeakSelf
-    [self.tableView.loadingView loading];
+    [self.tableView loading];
     [self.vm xy_viewModelWithProgress:nil success:^(id responseObject) {
         
-        [weakSelf.tableView.loadingView loadFinished];
+        [self.tableView loadFinished];
         /// 将数据传给tableView_ViewModel，由其内部处理
-        [weakSelf.tableView_ViewModel getModelListBlock:^NSArray *{
+        [self.tableView_ViewModel getDataSourceBlock:^NSArray *{
             return responseObject;
         } completion:^{
             /// 加载完成后 刷新数据源
-            [weakSelf.tableView reloadData];
+            [self.tableView reloadData];
         }];
     } failure:^(NSError *error) {
         NSLog(@"%@", error.localizedDescription);
         
-        [weakSelf.tableView.loadingView loadFailure];
+        [self.tableView loadFailure];
     }];
 
 }
@@ -83,6 +82,7 @@
     }
     return _vm;
 }
+
 
 - (void)dealloc {
     NSLog(@"%s", __func__);

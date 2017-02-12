@@ -6,7 +6,7 @@
 //  Copyright © 2017年 com.test.demo. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "UITableViewCell+XYConfigure.h"
 
 @interface ThirdTableViewCell : UITableViewCell
 

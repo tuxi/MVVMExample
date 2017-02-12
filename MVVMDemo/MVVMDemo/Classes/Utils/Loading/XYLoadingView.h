@@ -8,12 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, XYLoadingState) {
+    XYLoadingStateLoading,
+    XYLoadingStateFinished,
+    XYLoadingStateFailure
+};
+
 @interface XYLoadingView : UIView
 
 /// 加载时显示的文字
 @property (nonatomic, copy) NSString *loadingText;
-
+/// 点击重新按钮加载回调
 @property (nonatomic, copy) void(^reloadBlock)();
+/// 当前加载状态
+@property (nonatomic, assign) XYLoadingState state;
+
 
 /// 正在加载中
 - (void)loading;
@@ -21,7 +30,6 @@
 - (void)loadFinished;
 /// 加载失败
 - (void)loadFailure;
-
 
 
 @end

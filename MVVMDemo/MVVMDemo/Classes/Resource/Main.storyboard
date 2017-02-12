@@ -124,6 +124,9 @@
                             <constraint firstAttribute="trailing" secondItem="nsX-VT-ueS" secondAttribute="trailing" id="nMo-Se-9ev"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="nsX-VT-ueS" id="K7X-fV-42k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fX4-nb-gWP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

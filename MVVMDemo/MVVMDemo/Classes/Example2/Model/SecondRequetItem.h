@@ -6,7 +6,6 @@
 //  Copyright © 2017年 com.test.demo. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "XYRequestProtocol.h"
 #import "NSObject+XYRequest.h"
 

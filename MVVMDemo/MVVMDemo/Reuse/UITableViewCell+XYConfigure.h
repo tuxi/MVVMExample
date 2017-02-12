@@ -21,5 +21,5 @@
 /// 根据viewModel配置UITableViewCell， 设置UITableViewCell的内容
 - (void)xy_config:(UITableViewCell *)cell viewModel:(id<XYViewModelProtocol>)viewModel indexPath:(NSIndexPath *)indexPath;
 /// 获取自定义对象cell的高度（已集成UITableView+FDTemplateLayoutCell， 现在创建的cell自动计算高度）
-+ (CGFloat)xy_getCellHeightWithModel:(id)model indexPath:(NSIndexPath *)indexPath;
+- (CGFloat)xy_getCellHeightWithModel:(id)model indexPath:(NSIndexPath *)indexPath;
 @end

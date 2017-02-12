@@ -15,7 +15,7 @@
     self.xy_url = @"https://api.douban.com/v2/book/search";
 }
 
-- (id)xy_requestParameters {
+- (NSDictionary *)xy_requestParameters {
     return @{@"q": @"基础"};
 }
 

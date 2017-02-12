@@ -10,10 +10,11 @@
 
 @protocol XYTableViewModelProtocol <UITableViewDelegate, UITableViewDataSource>
 
-/// 传入一个tableView，内部设置其代理和数据源为SecondTableView_ViewModel类对象
-- (void)handleWithTableView:(UITableView *)tableView;
+@required
+/// 传入一个tableView，内部设置其代理和数据源对象, 及注册cell
+- (void)prepareTableView:(UITableView *)tableView;
 /// 获取模型数据源
-- (void)getDataSourceBlock:(NSArray *(^)())dataSource completion:(void(^)())completion;
+- (void)getDataSourceBlock:(id (^)())dataSource completion:(void(^)())completion;
 
 @optional
 /// 删除所有数据源

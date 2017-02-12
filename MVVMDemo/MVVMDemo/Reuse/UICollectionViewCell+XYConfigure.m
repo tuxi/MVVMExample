@@ -10,7 +10,7 @@
 
 @implementation UICollectionViewCell (XYConfigure)
 
-#pragma mark --
+#pragma mark -- Private
 + (UINib *)nibWithIdentifier:(NSString *)identifier
 {
     return [UINib nibWithNibName:identifier bundle:nil];
@@ -27,7 +27,6 @@
     [collect registerClass:[self class] forCellWithReuseIdentifier:identifier];
 }
 
-#pragma mark --
 #pragma mark - Rewrite these func in SubClass !
 - (void)xy_configure:(UICollectionViewCell *)cell model:(id)model indexPath:(NSIndexPath *)indexPath
 {

@@ -6,8 +6,8 @@
 //  Copyright © 2017年 com.test.demo. All rights reserved.
 //
 
-#import "MJRefreshAutoFooter.h"
+#import "MJRefreshAutoNormalFooter.h"
 
-@interface XYRefreshFooter : MJRefreshAutoFooter
+@interface XYRefreshFooter : MJRefreshAutoNormalFooter
 
 @end

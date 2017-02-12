@@ -67,11 +67,19 @@ static id _instance;
 
 #pragma mark - public request method
 - (NSURLSessionTask *)sendRequest:(id)request progress:(progressBlock)progress success:(successBlock)success failure:(failureBlock)failure {
+    /// 此时调用xy_requestConfigures 获取请求路径、请求方法、请求头信息等
     if ([request respondsToSelector:@selector(xy_requestConfigures)]) {
         [request xy_requestConfigures];
     }
     
     NSObject *requestObj = (NSObject *)request;
+    
+    /// 配置请求体信息
+    if (requestObj.xy_headers) {
+//        [self configRequestHeader:requestObj.xy_headers];
+        [self configRequestHeader:requestObj.xy_headers];
+    }
+    
     NSURLSessionTask *task = nil;
     
     switch (requestObj.xy_method) {
@@ -93,6 +101,7 @@ static id _instance;
     return task;
 }
 
+
 - (NSURLSessionTask *)sendRequestBlock:(id (^)(NSObject *))requestBlock progress:(progressBlock)progress success:(successBlock)success failure:(failureBlock)failure {
     
     if (requestBlock) {
@@ -111,6 +120,7 @@ static id _instance;
     NSDictionary *requestDict = [self requestObject:request];
     NSString *urlPath = requestDict[XYRequestUrlPath];
     NSDictionary *parameters = requestDict[XYRequestParameters];
+    
     
     return [self.sessionManager GET:urlPath parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
         if (progress) {
@@ -234,6 +244,23 @@ static id _instance;
     
 }
 
+/// 配置请求头信息
+- (void)configRequestHeader:(NSDictionary *)xy_headers {
+    if (xy_headers.count) {
+        for (NSString *key in xy_headers.allKeys) {
+            [self.sessionManager.requestSerializer setValue:xy_headers[key] forHTTPHeaderField:key];
+        }
+    }
+//    if (xy_headers.count) {
+//        for (NSInteger i = 0; i < xy_headers.count; ++i) {
+//            NSDictionary *dict = xy_headers[i];
+//            for (NSString *key in dict) {
+//                [self.sessionManager.requestSerializer setValue:dict[key] forHTTPHeaderField:key];
+//            }
+//        }
+//    }
+}
+
 /// 处理请求路径和请求参数，并返回处理后的结果
 - (NSDictionary *)requestObject:(id)request {
     NSObject *requestObjc = (NSObject *)request;
@@ -252,6 +279,7 @@ static id _instance;
     
     /// 处理parameters参数
     id parameters = nil;
+    /// 此时调用xy_requestParameters获取请求参数
     if ([request respondsToSelector:@selector(xy_requestParameters)]) {
         parameters = [request xy_requestParameters];
     } else if ([request respondsToSelector:@selector(setXy_params:)]) {
@@ -281,5 +309,7 @@ static id _instance;
 - (BOOL)isReachableViaWWAN {
     return [[AFNetworkReachabilityManager sharedManager] isReachableViaWWAN];
 }
+
+
 
 @end

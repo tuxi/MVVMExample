@@ -65,5 +65,11 @@
     return objc_setAssociatedObject(self, @selector(xy_fileConfig), xy_fileConfig, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
+- (void)setXy_headers:(NSDictionary *)xy_headers {
+    objc_setAssociatedObject(self, @selector(xy_headers), xy_headers, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+- (NSDictionary *)xy_headers {
+    return objc_getAssociatedObject(self, @selector(xy_headers));
+}
 
 @end

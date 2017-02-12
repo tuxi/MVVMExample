@@ -10,15 +10,16 @@
 
 @protocol XYRequestProtocol <NSObject>
 
+@required
 /**
  *  配置request请求参数
  *
  *  @return NSDictionary 或者 自定义参数模型
  */
-- (id)xy_requestParameters;
+- (NSDictionary *)xy_requestParameters;
 
 /**
- *  配置request的路径、请求参数等
+ *  配置request的路径、请求参数、requestSerializer等
  */
 - (void)xy_requestConfigures;
 

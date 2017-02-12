@@ -38,6 +38,11 @@ typedef void (^ViewModelInfosBlock)();
 
 @protocol XYViewModelProtocol <NSObject>
 
+
+@optional
+/**
+ *  通知
+ */
 - (void)xy_notice;
 
 /**
@@ -48,7 +53,22 @@ typedef void (^ViewModelInfosBlock)();
 /**
  *  加载数据
  */
-- (NSURLSessionTask *)xy_viewModelWithProgress:(progressBlock)progress success:(successBlock)success failure:(failureBlock)failure;
+- (NSURLSessionTask *)xy_viewModelWithProgress:(progressBlock)progress
+                                       success:(successBlock)success
+                                       failure:(failureBlock)failure;
+
+/**
+ * @explain 加载数据
+ *
+ * @param   requestItem  通过此block回调一个网络请求对象，配置请求参数
+ * @param   progress  请求进度回调
+ * @param   success  请求成功回调
+ * @return  failure  请求失败回调
+ */
+- (NSURLSessionTask *)xy_viewModelWithConfigRequest:(void (^)(id requestItem))requestItem
+                                           progress:(progressBlock)progress
+                                            success:(successBlock)success
+                                            failure:(failureBlock)failure;
 
 /**
  *  传递模型给view

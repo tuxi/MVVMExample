@@ -21,21 +21,22 @@ static NSString * const SecondCellIdentifier = @"SecondTableViewCell";
 @implementation SecondTableView_ViewModel
 
 #pragma mark - public
-- (void)handleWithTableView:(UITableView *)tableView {
+- (void)prepareTableView:(UITableView *)tableView {
     tableView.delegate = self;
     tableView.dataSource = self;
     /// 注册cell
     [UITableViewCell xy_registerTableViewCell:tableView nibIdentifier:SecondCellIdentifier];
 }
 
-- (void)getModelListBlock:(NSArray *(^)())modelList completion:(void (^)())completion {
-    if (modelList) {
-        self.dataList = modelList();
+- (void)getDataSourceBlock:(NSArray *(^)())dataSource completion:(void (^)())completion {
+    if (dataSource) {
+        self.dataList = dataSource();
         if (completion) {
             completion();
         }
     }
 }
+
 
 #pragma mark - <UITableViewDelegate, UITableViewDataSource>
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
