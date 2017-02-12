@@ -1,0 +1,22 @@
+//
+//  MVVMDemo.pch
+//  MVVMDemo
+//
+//  Created by mofeini on 17/2/12.
+//  Copyright © 2017年 com.test.demo. All rights reserved.
+//
+
+#ifndef MVVMDemo_pch
+#define MVVMDemo_pch
+
+#import "UIImage+XYExtension.h"
+
+/*************** 颜色 ***************/
+#define kColor(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
+#define kRandomColor kColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256), 1.0)
+#define kColorTabBarItemText_Sel kColor(249, 98, 88, 1.0)
+#define kColorTabBarItemText kColor(167, 167, 167, 1.0)
+#define kColorNavigationBarBg kColor(254, 242, 0, 1.0)
+
+
+#endif /* MVVMDemo_pch */
