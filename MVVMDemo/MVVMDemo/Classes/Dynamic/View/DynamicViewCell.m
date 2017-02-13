@@ -10,6 +10,7 @@
 #import "UIImageView+WebCache.h"
 #import "DynamicItem.h"
 #import "UIView+Events.h"
+#import "XYImageViewer.h"
 
 #define SIZE_GLOAB_MARGIN 10
 #define SIZE_CELL_BOTTOM_LINE 5
@@ -207,11 +208,20 @@
     return commentContentH;
 }
 
+- (UIImageView *)picViewAtIndex:(NSUInteger)index {
+    
+    return [_picContentView viewWithTag:index];
+}
+
 
 #pragma mark - Events 
 - (void)picClick:(UITapGestureRecognizer *)tap {
     
-    NSLog(@"%ld", tap.view.tag);
+    [[[XYImageViewer shareInstance] prepareImageURLList:_item.content.image
+                                                   endView:^UIView *(NSIndexPath *indexPath) {
+                                                       return [self picViewAtIndex:indexPath.row+1];
+                                                   }] show:tap.view currentImgIndex:tap.view.tag-1];
+    
 }
 
 @end

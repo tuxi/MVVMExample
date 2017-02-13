@@ -25,7 +25,8 @@
 @property (nonatomic, strong) NSArray<NSString *> *images;
 /// 图片的url 字符串数组
 @property (nonatomic, strong) NSArray<NSString *> *urlStrList;
-
+/// 当外界调用了prepareImageURLList时为YES，调用prepareImages时为NO
+@property (nonatomic, assign, getter=isRequestFromNetwork) BOOL requestFromNetwork;
 
 @end
 
@@ -50,50 +51,41 @@ static id _instance = nil;
     return [XYImageViewer shareInstance] ;
 }
 
-#pragma mark - 
-- (XYImageBrowerView *)brower {
-    if (_brower == nil) {
-        _brower = [[XYImageBrowerView alloc] init];
-        _brower.duration = 0.15;
-        _brower.delegate = self;
-        [_brower setDismissCallBack:^{
-            _brower = nil;
-            _fromView = nil;
-            _urlStrList = nil;
-            _image = nil;
-            _endViewBlock = nil;
-        }];
-    }
-    return _brower;
-}
+
 
 #pragma mark - 公开方法
 
 - (__kindof UIView *)show:(UIView *)fromView currentImgIndex:(NSInteger)currentImgIndex {
 
     NSInteger imgCount = 0;
-    if ([self respondsToSelector:@selector(prepareImageURLStrList:endView:)]) {
+    if (self.isRequestFromNetwork == YES) {
+        /// 从服务器请求
         imgCount = self.urlStrList.count;
-    } else if ([self respondsToSelector:@selector(prepareImages:endView:)]) {
+    } else {
+        /// 加载本地图片
         imgCount = self.images.count;
     }
-    [self.brower showFromView:fromView picturesCount:self.urlStrList.count currentPictureIndex:currentImgIndex];
+    [self.brower showFromView:fromView picturesCount:imgCount currentPictureIndex:currentImgIndex];
     
     return self.brower;
 }
 
 
-- (void)prepareImageURLStrList:(NSArray<NSString *> *)URLStrList endView:(UIView *(^)(NSIndexPath *indexPath))endViewBlock {
+- (XYImageViewer *)prepareImageURLList:(NSArray<NSString *> *)URLList endView:(UIView *(^)(NSIndexPath *indexPath))endViewBlock {
     
-    _urlStrList = URLStrList;
+    _urlStrList = URLList;
     _endViewBlock = endViewBlock;
+    _requestFromNetwork = YES;
+    
+    return [XYImageViewer shareInstance];
 }
 
 
-- (void)prepareImages:(NSArray<NSString *> *)images endView:(UIView *(^)(NSIndexPath *))endViewBlock {
+- (XYImageViewer *)prepareImages:(NSArray<NSString *> *)images endView:(UIView *(^)(NSIndexPath *))endViewBlock {
     
     _images = images;
     _endViewBlock = endViewBlock;
+    _requestFromNetwork = NO;
     
     NSMutableArray *tempArrM = [NSMutableArray arrayWithCapacity:1];
     for (NSString *imageName in images) {
@@ -103,6 +95,7 @@ static id _instance = nil;
     
     self.imageSizes = [tempArrM mutableCopy];
     tempArrM = nil;
+    return [XYImageViewer shareInstance];
 }
 
 
@@ -131,6 +124,26 @@ static id _instance = nil;
     return self.image;
 }
 
+#pragma mark - lazy
+- (XYImageBrowerView *)brower {
+    if (_brower == nil) {
+        _brower = [[XYImageBrowerView alloc] init];
+        _brower.duration = 0.15;
+        _brower.delegate = self;
+        [_brower setDismissCallBack:^{
+            _brower = nil;
+            _fromView = nil;
+            _urlStrList = nil;
+            _image = nil;
+            _endViewBlock = nil;
+        }];
+    }
+    return _brower;
+}
+
+- (BOOL)isRequestFromNetwork {
+    return _requestFromNetwork ?: NO;
+}
 
 @end
 

@@ -37,6 +37,7 @@ static CGFloat const reloadBtnH = 30;
     self.reloadBtn.hidden = YES;
     if (self.loadingImgs.count) {
         [self.flameAnimationView startAnimating];
+        self.loadingText = @"";
         return;
     }
     self.loadingText = @"正在加载";
