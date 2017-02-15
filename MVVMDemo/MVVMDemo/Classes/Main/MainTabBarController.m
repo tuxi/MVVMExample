@@ -35,7 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self addChildVC:[HomePageViewController new] imageNamed:@"find_tabbar_selecte" title:@"发现"];
+    [self addChildVC:[HomePageViewController new] imageNamed:@"find_tabbar_selecte" title:@"首页"];
     [self addChildVC:[DynamicViewController new] imageNamed:@"moment_tabbar_select" title:@"动态"];
     [self addChildVC:[MessageViewController new] imageNamed:@"chat_tabbar_select" title:@"消息"];
     [self addChildVC:[MeViewController new] imageNamed:@"mine_tabbar_select" title:@"我的"];

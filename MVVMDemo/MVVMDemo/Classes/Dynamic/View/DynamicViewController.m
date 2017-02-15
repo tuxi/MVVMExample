@@ -45,25 +45,25 @@
     uWeakSelf
     self.tableView.mj_header = [XYRefreshGifHeader headerWithRefreshingBlock:^{
         weakSelf.currentPage = 1;
-        [weakSelf loadDataFromNetworkWithPage:weakSelf.currentPage];
+        [weakSelf loadDataFromNetworkByPage:weakSelf.currentPage];
     }];
     
     [self.tableView reloadBlock:^{
-        [weakSelf loadDataFromNetworkWithPage:weakSelf.currentPage];
+        [weakSelf loadDataFromNetworkByPage:weakSelf.currentPage];
     }];
     
     [self.tableView.mj_header beginRefreshing];
     
     self.tableView.mj_footer = [XYRefreshFooter footerWithRefreshingBlock:^{
         weakSelf.currentPage++;
-        [weakSelf loadDataFromNetworkWithPage:weakSelf.currentPage];
+        [weakSelf loadDataFromNetworkByPage:weakSelf.currentPage];
     }];
     
     self.tableView.loadingView.loadingImgs = self.loadingImages;
     
 }
 
-- (void)loadDataFromNetworkWithPage:(NSInteger)page {
+- (void)loadDataFromNetworkByPage:(NSInteger)page {
     
     [self.tableView loading];
     [self.viewModel xy_viewModelWithConfigRequest:^(id requestItem) {
