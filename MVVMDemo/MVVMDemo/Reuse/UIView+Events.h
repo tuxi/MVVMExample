@@ -16,7 +16,7 @@ typedef void(^ViewEventsBlock)();
 
 @interface UIView (Events)
 
-/// 传递时间的代理对象
+/// 传递事件的代理对象
 @property (nullable, nonatomic, weak) id<XYViewProtocol> viewDelete;
 
 /// 通过block传递事件

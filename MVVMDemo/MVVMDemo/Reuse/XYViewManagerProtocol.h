@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "XYViewProtocol.h"
-#import "XYViewManagerProtocol.h"
 
 
 typedef void (^ViewEventsBlock)( );

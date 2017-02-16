@@ -70,12 +70,12 @@ typedef void (^ViewModelInfosBlock)( );
 /**
  *  xy_viewMangerInfos
  */
-@property (nonatomic, copy) NSDictionary *xy_viewMangerInfos;
+@property (nonatomic, strong) NSDictionary *xy_viewMangerInfos;
 
 /**
  *  xy_viewModelInfos
  */
-@property (nonatomic, copy) NSDictionary *xy_viewModelInfos;
+@property (nonatomic, strong) NSDictionary *xy_viewModelInfos;
 
 
 

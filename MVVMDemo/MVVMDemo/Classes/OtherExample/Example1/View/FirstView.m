@@ -39,7 +39,7 @@
     
     /// 传递事件
     if (self.viewDelete && [self.viewDelete respondsToSelector:@selector(xy_view:events:)]) {
-        [self.viewDelete xy_view:self events:@{@"jump": @"DynamicViewController"}];
+        [self.viewDelete xy_view:self events:@{@"jump": @"DynamicViewController "}];
     }
 }
 
