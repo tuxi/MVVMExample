@@ -18,7 +18,7 @@
 - (NSURLSessionTask *)xy_viewModelWithProgress:(progressBlock)progress success:(successBlock)success failure:(failureBlock)failure {
     
     /// 从网络请求数据
-    return [[XYNetworkRequest sharedInstance] sendRequestBlock:^id(NSObject *request) {
+    return [[XYNetworkRequest sharedInstance] sendRequestBlock:^id(id<XYRequestProtocol> request) {
         return [SecondRequetItem new];
     } progress:nil success:^(id responseObject) {
         /// 转换为模型 并通过block回调

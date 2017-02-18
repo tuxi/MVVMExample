@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "XYRequestProtocol.h"
 
 /**
  *  请求成功block
@@ -70,20 +70,29 @@ typedef void (^progressBlock)(NSProgress * progress);
  */
 - (void)configScheme:(NSString *)scheme host:(NSString *)host;
 
+
 /**
- *  发送请求(在外部配置request)
+ * 发送请求Block(在block内部配置request)
+ *
+ * @param   request  在外部配置request对象,该对象需遵守XYRequestProtocol协议
+ * @param   progress  请求进度回调block
+ * @param   success  请求成功回调block
+ * @return  failure  请求失败回调block
  */
-- (NSURLSessionTask *)sendRequest:
-(id)request
+- (NSURLSessionTask *)sendRequest:(id<XYRequestProtocol>)request
                          progress:(progressBlock)progress
                           success:(successBlock)success
                           failure:(failureBlock)failure;
 
 /**
- *  发送请求Block(在block内部配置request)
+ * 发送请求Block(在block内部配置request)
+ *
+ * @param   requestBlock  回调一个已经创建好的请求对象，外界只需要配置内部的request即可，不必再创建，配置完后return它
+ * @param   progress  请求进度回调block
+ * @param   success  请求成功回调block
+ * @return  failure  请求失败回调block
  */
-- (NSURLSessionTask *)sendRequestBlock:
-(id (^)(NSObject *request))requestBlock
+- (NSURLSessionTask *)sendRequestBlock:(id (^)(id<XYRequestProtocol> request))requestBlock
                               progress:(progressBlock)progress
                                success:(successBlock)success
                                failure:(failureBlock)failure;
@@ -91,7 +100,7 @@ typedef void (^progressBlock)(NSProgress * progress);
 
 @end
 
-@interface XYRequestFileConfig : NSObject
+@interface XYRequestFileConfig : NSObject<NSCopying>
 
 /**
  *  文件数据
@@ -113,8 +122,8 @@ typedef void (^progressBlock)(NSProgress * progress);
  */
 @property (nonatomic, copy) NSString *mimeType;
 
-+ (instancetype)fileConfigWithfileData:(NSData *)fileData name:(NSString *)name fileName:(NSString *)fileName mimeType:(NSString *)mimeType;
++ (instancetype)fileConfigWithFormData:(NSData *)fileData name:(NSString *)name fileName:(NSString *)fileName mimeType:(NSString *)mimeType;
 
-- (instancetype)initWithfileData:(NSData *)fileData name:(NSString *)name fileName:(NSString *)fileName mimeType:(NSString *)mimeType;
+- (instancetype)initWithFormData:(NSData *)fileData name:(NSString *)name fileName:(NSString *)fileName mimeType:(NSString *)mimeType;
 
 @end

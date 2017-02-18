@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180536331E57FED90070D26E /* XYHomePageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 180536321E57FED90070D26E /* XYHomePageViewModel.m */; };
+		180536361E5800540070D26E /* HomePageRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 180536351E5800540070D26E /* HomePageRequestItem.m */; };
 		1827C0581E4C741D0080AB27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C0571E4C741D0080AB27 /* main.m */; };
 		1827C2131E4E21620080AB27 /* NSObject+XYProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C1FE1E4E21620080AB27 /* NSObject+XYProperties.m */; };
 		1827C2141E4E21620080AB27 /* NSObject+XYRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C2001E4E21620080AB27 /* NSObject+XYRequest.m */; };
@@ -168,6 +170,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		180536311E57FED90070D26E /* XYHomePageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYHomePageViewModel.h; sourceTree = "<group>"; };
+		180536321E57FED90070D26E /* XYHomePageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYHomePageViewModel.m; sourceTree = "<group>"; };
+		180536341E5800540070D26E /* HomePageRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageRequestItem.h; sourceTree = "<group>"; };
+		180536351E5800540070D26E /* HomePageRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageRequestItem.m; sourceTree = "<group>"; };
 		1827C0531E4C741D0080AB27 /* MVVMDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1827C0571E4C741D0080AB27 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1827C1FD1E4E21620080AB27 /* NSObject+XYProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+XYProperties.h"; sourceTree = "<group>"; };
@@ -673,6 +679,8 @@
 		18C85E791E50AD3B00C615EA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				180536341E5800540070D26E /* HomePageRequestItem.h */,
+				180536351E5800540070D26E /* HomePageRequestItem.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -696,6 +704,8 @@
 		18C85E7E1E50AD3B00C615EA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				180536311E57FED90070D26E /* XYHomePageViewModel.h */,
+				180536321E57FED90070D26E /* XYHomePageViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1487,6 +1497,7 @@
 				18C85FD21E50AD3B00C615EA /* UIProgressView+AFNetworking.m in Sources */,
 				18C85FD11E50AD3B00C615EA /* UIImageView+AFNetworking.m in Sources */,
 				18C85FED1E50AD3B00C615EA /* MJRefreshHeader.m in Sources */,
+				180536361E5800540070D26E /* HomePageRequestItem.m in Sources */,
 				18C860351E50AD3B00C615EA /* MessageViewController.m in Sources */,
 				18C85FEE1E50AD3B00C615EA /* MJRefreshAutoGifFooter.m in Sources */,
 				18C860461E50AD3B00C615EA /* XYLoadingView.m in Sources */,
@@ -1504,6 +1515,7 @@
 				18C860411E50AD3B00C615EA /* SecondTableViewCell.m in Sources */,
 				18C860221E50AD3B00C615EA /* UIButton+SUIAdditions.m in Sources */,
 				18C85FCD1E50AD3B00C615EA /* AFImageDownloader.m in Sources */,
+				180536331E57FED90070D26E /* XYHomePageViewModel.m in Sources */,
 				18C860031E50AD3B00C615EA /* SDWebImageDecoder.m in Sources */,
 				18C8601C1E50AD3B00C615EA /* UITableViewCell+SUIHelper.m in Sources */,
 				18C85FF01E50AD3B00C615EA /* MJRefreshAutoStateFooter.m in Sources */,

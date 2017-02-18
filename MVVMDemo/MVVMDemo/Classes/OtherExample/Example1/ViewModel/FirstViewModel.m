@@ -31,7 +31,7 @@
 - (NSURLSessionTask *)xy_viewModelWithProgress:(progressBlock)progress success:(successBlock)success failure:(failureBlock)failure {
     
     /// 发送网络请求
-    return [[XYNetworkRequest sharedInstance] sendRequestBlock:^id(NSObject *request) {
+    return [[XYNetworkRequest sharedInstance] sendRequestBlock:^id(id<XYRequestProtocol> request) {
         return [FirstRequest new];
     } progress:nil success:^(id responseObject) {
         NSArray *modelList = [FirstModel mj_objectArrayWithKeyValuesArray:responseObject[@"books"]];

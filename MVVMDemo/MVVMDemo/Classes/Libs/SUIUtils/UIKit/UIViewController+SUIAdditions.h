@@ -55,7 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  返回storybosrd中指定identifer的控制器
  *
- *  @param storyboardName 控制器所在的storyboard
+ *  @param storyboard 控制器所在的storyboard
  *  @param identifier     控制器在storyboard中指定的标识符
  *
  *  @return 指定identifer的控制器

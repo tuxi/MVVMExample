@@ -27,7 +27,7 @@
     return _item;
 }
 
-- (NSURLSessionTask *)xy_viewModelWithConfigRequest:(void (^)(id))requestItem
+- (NSURLSessionTask *)xy_viewModelWithConfigRequest:(void (^)(id<XYRequestProtocol>))requestItem
                                            progress:(progressBlock)progress
                                             success:(successBlock)success
                                             failure:(failureBlock)failure {
@@ -38,11 +38,8 @@
     if (requestItem) {
         requestItem(weakSelf.item);
     }
-    return [[XYNetworkRequest sharedInstance] sendRequestBlock:^id(NSObject *request) {
-        return weakSelf.item;
-    }
-                                                      progress:nil
-                                                       success:^(id responseObject) {
+    return [[XYNetworkRequest sharedInstance] sendRequest:weakSelf.item                                                      progress:nil
+                                                  success:^(id responseObject) {
                                                            
                                                            NSMutableArray<DynamicItem *> *arrayList = [NSMutableArray array];
                                                            

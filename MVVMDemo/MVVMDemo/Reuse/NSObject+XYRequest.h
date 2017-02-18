@@ -19,7 +19,7 @@ typedef NS_ENUM(NSUInteger, RequestMethod) {
 };
 
 @class XYRequestFileConfig;
-@interface NSObject (XYRequest)<XYRequestProtocol>
+@interface NSObject (XYRequest)
 
 /**
  *  scheme (eg: http, https, ftp)
