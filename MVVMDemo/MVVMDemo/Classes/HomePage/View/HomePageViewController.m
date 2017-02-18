@@ -54,8 +54,8 @@
 /// 上传图片到服务器
 - (void)btnClick:(UIButton *)b {
     
-//    [self presentViewController:self.imgPC animated:YES completion:nil];
-    [self upload:[UIImage imageNamed:@"chat_tabbar_select"]];
+    [self presentViewController:self.imgPC animated:YES completion:nil];
+//    [self upload:[UIImage imageNamed:@"chat_tabbar_select"]];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
@@ -63,37 +63,32 @@
     // 获取图片
     UIImage *image = info[UIImagePickerControllerOriginalImage];
     
-    // 上传图片
-    [self upload:image];
+    [[[NSOperationQueue alloc] init] addOperationWithBlock:^{
+        // 上传图片
+        [self upload:image];
+    }];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 - (void)upload:(UIImage *)image {
     
-//    [self.vm xy_viewModelWithConfigRequest:^(id<XYRequestProtocol> requestItem) {
-//        
-//        /// 处理request
-//        HomePageRequestItem *item = (HomePageRequestItem *)requestItem;
-////        item.xy_fileConfig.fileData = UIImagePNGRepresentation(image);
-////        item.xy_fileConfig.name = @"ssds";
-////        item.xy_fileConfig.fileName = @"sas";
-////        item.xy_fileConfig.mimeType = @"image/jpeg";
-////        item.xy_method = RequestMethodUPLOAD;
-////        item.xy_url = @"http://localhost:8080/FileUploadDemo/upload1";
-//        NSLog(@"item==%@", item);
-//        NSLog(@"%@", item.xy_fileConfig);
-//        
-//    } progress:nil success:^(id responseObject) {
-//        NSLog(@"---%@", responseObject);
-//    } failure:^(NSError *error) {
-//        NSLog(@"%@", error);
-//    }];
+    [self.vm xy_viewModelWithConfigRequest:^(id<XYRequestProtocol> requestItem) {
+        
+        /// 处理request
+        HomePageRequestItem *item = (HomePageRequestItem *)requestItem;
+        item.xy_fileConfig = [XYRequestFileConfig fileConfigWithFormData:UIImagePNGRepresentation(image) name:@"image111" fileName:@"sas" mimeType:@"image/png"];
+        
+    } progress:nil success:^(id responseObject) {
+        NSLog(@"---%@", responseObject);
+        id obj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
+        NSLog(@"---%@", obj);
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+    }];
     
-//    [self.vm xy_viewModelWithProgress:nil success:^(id responseObject) {
-//        NSLog(@"%@", responseObject);
-//    } failure:^(NSError *error) {
-//        NSLog(@"%@", error);
-//    }];
-//    
+    
 }
 
 @end

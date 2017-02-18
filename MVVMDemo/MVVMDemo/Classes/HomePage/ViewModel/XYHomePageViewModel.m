@@ -21,34 +21,33 @@
 - (HomePageRequestItem *)requestItem {
     if (_requestItem == nil) {
         _requestItem = [HomePageRequestItem new];
-        _requestItem.xy_fileConfig = [XYRequestFileConfig new];
     }
     return _requestItem;
 }
 
 
-//- (NSURLSessionTask *)xy_viewModelWithConfigRequest:(void (^)(id<XYRequestProtocol> request))requestBlock
-//                                           progress:(progressBlock)progress
-//                                            success:(successBlock)success
-//                                            failure:(failureBlock)failure {
-//    
-//    if (requestBlock) {
-//        requestBlock(self.requestItem);
-//    }
-//    
-//    NSURLSessionTask *task = [[XYNetworkRequest sharedInstance] sendRequest:self.requestItem
-//                                                                   progress:nil success:^(id responseObject) {
-//                                                                       if (success) {
-//                                                                           success(responseObject);
-//                                                                       }
-//                                                                   } failure:^(NSError *error) {
-//                                                                       if (failure) {
-//                                                                           failure(error);
-//                                                                       }
-//                                                                   }];
-//    return task;
-//    
-//}
+- (NSURLSessionTask *)xy_viewModelWithConfigRequest:(void (^)(id<XYRequestProtocol> request))requestBlock
+                                           progress:(progressBlock)progress
+                                            success:(successBlock)success
+                                            failure:(failureBlock)failure {
+    
+    if (requestBlock) {
+        requestBlock(self.requestItem);
+    }
+    
+    NSURLSessionTask *task = [[XYNetworkRequest sharedInstance] sendRequest:self.requestItem
+                                                                   progress:nil success:^(id responseObject) {
+                                                                       if (success) {
+                                                                           success(responseObject);
+                                                                       }
+                                                                   } failure:^(NSError *error) {
+                                                                       if (failure) {
+                                                                           failure(error);
+                                                                       }
+                                                                   }];
+    return task;
+    
+}
 
 
 

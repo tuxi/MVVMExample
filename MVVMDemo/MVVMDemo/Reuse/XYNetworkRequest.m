@@ -234,6 +234,8 @@ static id _instance;
     
     NSObject *requestObj = (NSObject *)request;
 //    NSLog(@"%@", request);
+    self.sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
     return [self.sessionManager POST:urlPath parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         [formData appendPartWithFileData:requestObj.xy_fileConfig.fileData
                                     name:requestObj.xy_fileConfig.name
