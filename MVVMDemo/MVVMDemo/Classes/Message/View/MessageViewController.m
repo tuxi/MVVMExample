@@ -67,6 +67,7 @@
     
 }
 
+/// 测试上传图片或视频
 - (void)upload:(UIImage *)image name:(NSString *)name {
     
     /// 保存

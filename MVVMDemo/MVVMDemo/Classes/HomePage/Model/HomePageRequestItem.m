@@ -16,7 +16,7 @@
 - (void)xy_requestConfigures {
     
     self.xy_method = RequestMethodUPLOAD;
-    self.xy_url = @"http://192.168.1.101:8080/FileUploadDemo/upload1";
+    self.xy_url = @"http://192.168.1.101:8080/FileUploadDemo/upload2";
 //    UIImage *img = [UIImage imageNamed:@"chat_tabbar_un"];
 //    self.xy_fileConfig = [[XYRequestFileConfig alloc] initWithFormData:UIImagePNGRepresentation(img) name:@"chat_tabbar_un" fileName:@"chat_tabbar_un" mimeType:@"image/jpeg"];
     
@@ -25,7 +25,7 @@
 
 - (NSDictionary *)xy_requestParameters {
     
-    return @{@"username": @"sey", @"f": @"file"};
+    return @{@"username": @"sey"};
 }
 
 

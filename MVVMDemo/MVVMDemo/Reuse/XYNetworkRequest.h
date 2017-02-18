@@ -85,13 +85,22 @@ typedef void (^progressBlock)(NSProgress * pgs);
 
 @interface XYRequestFileConfig : NSObject<NSCopying>
 
-/// 文件数据
+/// 文件二进制数据
 @property (nonatomic, strong) NSData *fileData;
 
-/// 服务器接收参数名
+/// 服务器接收的 类似input标签type为file的name值
+/// 此参数用于获取文件上传对象 Part part = request.getPart("f"); 这个f就是name的值
+/* 
+web端，可以这么写，name属性，就是相当于type="file"的name
+<form action="/FileUploadDemo/upload1" method="post" enctype="multipart/form-data">
+<input type="text" name="username"/><br/>
+<input type="file" name="f"/><br/>
+<input type="submit" value="提交"/>
+</form>
+ */
 @property (nonatomic, copy) NSString *name;
 
-/// 文件名
+/// 文件全名，要带上后缀，比如1.png
 @property (nonatomic, copy) NSString *fileName;
 
 /// 文件类型

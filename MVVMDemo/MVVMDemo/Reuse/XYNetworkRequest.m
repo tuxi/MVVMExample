@@ -226,7 +226,8 @@ static id _instance;
     
     NSObject *requestObj = (NSObject *)request;
 //    NSLog(@"%@", request);
-//    self.sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    // 别把这个网页当json来处理
+    self.sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
     return [self.sessionManager POST:urlPath parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
@@ -343,7 +344,7 @@ static id _instance;
 - (AFHTTPSessionManager *)sessionManager {
     if (_sessionManager == nil) {
         _sessionManager = [AFHTTPSessionManager manager];
-        _sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain", @"multipart/form-data", @"image/jpeg", @"image/png", @"text/plain", nil];
+        _sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain", @"image/jpeg", @"image/png", @"text/plain", nil];
         _sessionManager.requestSerializer.timeoutInterval = self.timeoutInterval;
     }
     return _sessionManager;

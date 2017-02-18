@@ -9,6 +9,7 @@
 #import "HomePageViewController.h"
 #import "XYHomePageViewModel.h"
 #import "HomePageRequestItem.h"
+#import "AFNetworking.h"
 
 @interface HomePageViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -74,23 +75,54 @@
     
 }
 
+/// 使用AFN 上传图片
 - (void)upload:(UIImage *)image name:(NSString *)name {
     
-    [self.vm xy_viewModelWithConfigRequest:^(id<XYRequestProtocol> requestItem) {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    /// responseSerializer.acceptableContentTypes中不添加@"multipart/form-data",也是可以的
+//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain", @"image/jpeg", @"image/png", @"text/plain", @"multipart/form-data", nil];
+
+    
+    [manager POST:@"http://192.168.1.101:8080/FileUploadDemo/upload2" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
-        /// 处理request
-        HomePageRequestItem *item = (HomePageRequestItem *)requestItem;
-        item.xy_fileConfig = [XYRequestFileConfig fileConfigWithFormData:UIImagePNGRepresentation(image) name:@"name" fileName:@"sas" mimeType:@"image/png"];
+        /// fileData是要上传文件的二进制数据
+        NSData *fileData = UIImagePNGRepresentation(image);
+        /// 此name主要用于java中获取Part(文件上传组件对象的)，此name值必须是与服务端约定好的固定值，不然服务器到错误的name值时，就无法创建Part对象，最终肯定上传失败的，此name值在HTML5页面中用input标签type="file" 然后设置name值
+        NSString *name = @"file";
+        /// fileName为文件的名称
+        NSString *fileName = [NSString stringWithFormat:@"%@.png", name];
+        /// mimeType为文件类型
+        NSString *mimeType = @"image/png";
         
-    } progress:nil success:^(id responseObject) {
-//        NSLog(@"---%@", responseObject);
-        id obj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
-        NSLog(@"---%@", obj);
-    } failure:^(NSError *error) {
+        [formData appendPartWithFileData:fileData name:@"file" fileName:fileName mimeType:mimeType];
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        NSLog(@"%@", uploadProgress);
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@", responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@", error);
     }];
-    
-    
 }
+
+/// 使用基于ANF进行封装的类 上传图片
+//- (void)upload:(UIImage *)image name:(NSString *)name {
+//    
+//    [self.vm xy_viewModelWithConfigRequest:^(id<XYRequestProtocol> requestItem) {
+//        
+//        /// 拿到回调回来的请求对象，动态配置request
+//        HomePageRequestItem *item = (HomePageRequestItem *)requestItem;
+//        item.xy_fileConfig = [XYRequestFileConfig fileConfigWithFormData:UIImagePNGRepresentation(image) name:@"f" fileName:@"image.png" mimeType:@"image/png"];
+//        
+//    } progress:nil success:^(id responseObject) {
+//        
+//        id obj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
+//        NSLog(@"---%@", obj);
+//    } failure:^(NSError *error) {
+//        NSLog(@"%@", error);
+//    }];
+//    
+//    
+//}
 
 @end
