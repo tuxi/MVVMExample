@@ -55,33 +55,35 @@
 - (void)btnClick:(UIButton *)b {
     
     [self presentViewController:self.imgPC animated:YES completion:nil];
-//    [self upload:[UIImage imageNamed:@"chat_tabbar_select"]];
+
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
     // 获取图片
     UIImage *image = info[UIImagePickerControllerOriginalImage];
+    NSString *url = info[UIImagePickerControllerReferenceURL];
+    
     
     [[[NSOperationQueue alloc] init] addOperationWithBlock:^{
         // 上传图片
-        [self upload:image];
+        [self upload:image name:url];
     }];
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
-- (void)upload:(UIImage *)image {
+- (void)upload:(UIImage *)image name:(NSString *)name {
     
     [self.vm xy_viewModelWithConfigRequest:^(id<XYRequestProtocol> requestItem) {
         
         /// 处理request
         HomePageRequestItem *item = (HomePageRequestItem *)requestItem;
-        item.xy_fileConfig = [XYRequestFileConfig fileConfigWithFormData:UIImagePNGRepresentation(image) name:@"image111" fileName:@"sas" mimeType:@"image/png"];
+        item.xy_fileConfig = [XYRequestFileConfig fileConfigWithFormData:UIImagePNGRepresentation(image) name:@"name" fileName:@"sas" mimeType:@"image/png"];
         
     } progress:nil success:^(id responseObject) {
-        NSLog(@"---%@", responseObject);
+//        NSLog(@"---%@", responseObject);
         id obj = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         NSLog(@"---%@", obj);
     } failure:^(NSError *error) {
