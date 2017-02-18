@@ -14,69 +14,40 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/**
- *  ViewModelBlock
- */
-typedef _Nonnull id (^ViewModelBlock)( );
-/**
- *  ViewMangerInfosBlock
- */
-typedef void (^ViewMangerInfosBlock)( );
-/**
- *  ViewModelInfosBlock
- */
-typedef void (^ViewModelInfosBlock)( );
+typedef _Nonnull id (^ViewModelBlock)();
 
+typedef void (^ViewMangerInfosBlock)();
 
-
+typedef void (^ViewModelInfosBlock)();
 
 @interface NSObject (XYProperties)
 
-/**
- *  viewModelBlock
- */
+
 @property (nonatomic, copy, nonnull) ViewModelBlock viewModelBlock;
 
-/**
- *  获取一个对象的所有属性
- */
+/// 获取一个对象的所有属性
 - (nullable NSDictionary *)xy_allProperties;
 
-/**
- *  viewMangerDelegate
- */
+
 @property (nullable, nonatomic, weak) id<XYViewManagerProtocol> viewMangerDelegate;
 
-/**
- *  ViewMangerInfosBlock
- */
+
 @property (nonatomic, copy) ViewMangerInfosBlock viewMangerInfosBlock;
 
-/**
- *  viewModelDelegate
- */
+
 @property (nullable, nonatomic, weak) id<XYViewModelProtocol> viewModelDelegate;
 
-/**
- *  ViewModelInfosBlock
- */
+
 @property (nonatomic, copy) ViewModelInfosBlock viewModelInfosBlock;
 
-/**
- *  mediator
- */
+/// 传递者
 @property (nonatomic, strong) XYMediator *xy_mediator;
 
-/**
- *  xy_viewMangerInfos
- */
+/// 传递的信息
 @property (nonatomic, strong) NSDictionary *xy_viewMangerInfos;
 
-/**
- *  xy_viewModelInfos
- */
+/// 传递的信息
 @property (nonatomic, strong) NSDictionary *xy_viewModelInfos;
-
 
 
 @end

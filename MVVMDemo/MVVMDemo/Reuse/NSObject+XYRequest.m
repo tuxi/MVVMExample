@@ -72,4 +72,12 @@
     return objc_getAssociatedObject(self, @selector(xy_headers));
 }
 
+- (void)setXy_fileConfigList:(NSArray<XYRequestFileConfig *> *)xy_fileConfigList {
+    objc_setAssociatedObject(self, @selector(xy_fileConfigList), xy_fileConfigList, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSArray<XYRequestFileConfig *> *)xy_fileConfigList {
+    return objc_getAssociatedObject(self, @selector(xy_fileConfigList));
+}
+
 @end

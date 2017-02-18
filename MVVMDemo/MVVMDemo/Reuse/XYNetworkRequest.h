@@ -4,69 +4,50 @@
 //
 //  Created by mofeini on 17/2/10.
 //  Copyright © 2017年 com.test.demo. All rights reserved.
-//
+//  封装的网络请求工具类
 
 #import <Foundation/Foundation.h>
 #import "XYRequestProtocol.h"
 
-/**
- *  请求成功block
- */
+
+/// 请求成功block
 typedef void (^successBlock)(id responseObject);
 
-/**
- *  请求失败block
- */
+/// 请求失败block
 typedef void (^failureBlock) (NSError *error);
 
-/**
- *  请求响应block
- */
+/// 请求响应block
 typedef void (^responseBlock)(id dataObj, NSError *error);
 
-/**
- *  监听进度响应block
- */
-typedef void (^progressBlock)(NSProgress * progress);
+/// 监听进度响应block
+typedef void (^progressBlock)(NSProgress * pgs);
 
 @class XYRequestFileConfig;
 @interface XYNetworkRequest : NSObject
 
-/**
- *  请求超时时间
- */
+/// 请求超时时间
 @property (nonatomic, assign) NSTimeInterval timeoutInterval;
 
-/**
- reachable
- */
+/// reachable
 @property (readonly, nonatomic, assign, getter = isReachable) BOOL reachable;
 
-/**
- reachableViaWWAN
- */
+/// reachableViaWWAN
 @property (readonly, nonatomic, assign, getter = isReachableViaWWAN) BOOL reachableViaWWAN;
 
-/**
- reachableViaWiFi
- */
+/// reachableViaWiFi
 @property (readonly, nonatomic, assign, getter = isReachableViaWiFi) BOOL reachableViaWiFi;
 
-/**
- *  单例
- */
+/// 初始化实例
 + (instancetype)sharedInstance;
 
-/**
- *  取消所有操作
- */
+/// 取消所有操作
 - (void)cancelAllOperations;
 
 /**
  *  配置全局的scheme和host，若request中重新设置新值，则值为request中设置的新值
  *
- *  @param scheme scheme (eg: http, https, ftp)
- *  @param host   host
+ *  @param scheme 传输协议 (eg: http, https, ftp)
+ *  @param host   主机地址
  */
 - (void)configScheme:(NSString *)scheme host:(NSString *)host;
 
@@ -100,26 +81,20 @@ typedef void (^progressBlock)(NSProgress * progress);
 
 @end
 
+#pragma mark - 上传文件 配置
+
 @interface XYRequestFileConfig : NSObject<NSCopying>
 
-/**
- *  文件数据
- */
+/// 文件数据
 @property (nonatomic, strong) NSData *fileData;
 
-/**
- *  服务器接收参数名
- */
+/// 服务器接收参数名
 @property (nonatomic, copy) NSString *name;
 
-/**
- *  文件名
- */
+/// 文件名
 @property (nonatomic, copy) NSString *fileName;
 
-/**
- *  文件类型
- */
+/// 文件类型
 @property (nonatomic, copy) NSString *mimeType;
 
 + (instancetype)fileConfigWithFormData:(NSData *)fileData name:(NSString *)name fileName:(NSString *)fileName mimeType:(NSString *)mimeType;

@@ -38,32 +38,36 @@
     if (requestItem) {
         requestItem(weakSelf.item);
     }
-    return [[XYNetworkRequest sharedInstance] sendRequest:weakSelf.item                                                      progress:nil
-                                                  success:^(id responseObject) {
-                                                           
-                                                           NSMutableArray<DynamicItem *> *arrayList = [NSMutableArray array];
-                                                           
-                                                           /// 将服务器请求的数据转换为模型，返回给外界使用
-                                                           if (responseObject[@"data"]) {
-                                                               if ([responseObject[@"data"][@"code"] isEqualToString:@"0"]) {
-                                                                   /// code为0，说明请求数据成功
-                                                                   for (id obj in responseObject[@"data"][@"list"]) {
-                                                                       if ([obj isKindOfClass:[NSDictionary class]]) {
-                                                                           [arrayList addObject:[DynamicItem itemWithDict:obj]];
-                                                                       }
-                                                                   }
-                                                               }
-                                                           }
-                                                           
-                                                           if (success) {
-                                                               success(arrayList);
-                                                           }
-                                                       }
-                                                       failure:^(NSError *error) {
-                                                           if (failure) {
-                                                               failure(error);
-                                                           }
-                                                       }];
+    
+    NSURLSessionTask *task = [[XYNetworkRequest sharedInstance]
+                              sendRequest:weakSelf.item
+                              progress:nil success:^(id responseObject) {
+                                  
+                                  NSMutableArray<DynamicItem *> *arrayList = [NSMutableArray array];
+                                  
+                                  /// 将服务器请求的数据转换为模型，返回给外界使用
+                                  if (responseObject[@"data"]) {
+                                      if ([responseObject[@"data"][@"code"] isEqualToString:@"0"]) {
+                                          /// code为0，说明请求数据成功
+                                          for (id obj in responseObject[@"data"][@"list"]) {
+                                              if ([obj isKindOfClass:[NSDictionary class]]) {
+                                                  [arrayList addObject:[DynamicItem itemWithDict:obj]];
+                                              }
+                                          }
+                                      }
+                                  }
+                                  
+                                  if (success) {
+                                      success(arrayList);
+                                  }
+                              }
+                              failure:^(NSError *error) {
+                                  if (failure) {
+                                      failure(error);
+                                  }
+                              }];
+    
+    return task;
 }
 
 

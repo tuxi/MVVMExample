@@ -12,11 +12,11 @@
 
 - (void)xy_configViewWithModel:(id)model {
 
-    /// 这个方法需要子类重写
+    /// 这个方法需要重写
 }
 
 - (void)xy_configViewWithViewModel:(id<XYViewModelProtocol>)vm {
-    /// 这个方法需要子类重写
+    /// 这个方法需要重写
 }
 
 @end

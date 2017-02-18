@@ -17,14 +17,13 @@ static NSString * const XYRequestParameters = @"XYRequestParameters";
 @interface XYNetworkRequest ()
 
 @property (nonatomic, strong) AFHTTPSessionManager *sessionManager;
-/**
- *  scheme
- */
+
+/// scheme
 @property (nonatomic, copy) NSString *scheme;
-/**
- *  host
- */
+
+/// host
 @property (nonatomic, copy) NSString *host;
+
 @end
 
 @implementation XYNetworkRequest
@@ -52,14 +51,7 @@ static id _instance;
     return _instance;
 }
 
-- (AFHTTPSessionManager *)sessionManager {
-    if (_sessionManager == nil) {
-        _sessionManager = [AFHTTPSessionManager manager];
-        _sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain", nil];
-        _sessionManager.requestSerializer.timeoutInterval = (!self.timeoutInterval ?: self.timeoutInterval);
-    }
-    return _sessionManager;
-}
+
 
 - (void)configScheme:(NSString *)scheme host:(NSString *)host {
     self.scheme = scheme;
@@ -234,13 +226,28 @@ static id _instance;
     
     NSObject *requestObj = (NSObject *)request;
 //    NSLog(@"%@", request);
-    self.sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+//    self.sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
     return [self.sessionManager POST:urlPath parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        [formData appendPartWithFileData:requestObj.xy_fileConfig.fileData
-                                    name:requestObj.xy_fileConfig.name
-                                fileName:requestObj.xy_fileConfig.fileName
-                                mimeType:requestObj.xy_fileConfig.mimeType];
+        
+        // 判断有没有多个文件上传
+        if (requestObj.xy_fileConfigList && requestObj.xy_fileConfigList.count > 0) {
+            for (XYRequestFileConfig *fc in requestObj.xy_fileConfigList) {
+                [formData appendPartWithFileData:fc.fileData
+                                            name:fc.name
+                                        fileName:fc.fileName
+                                        mimeType:fc.mimeType];
+            }
+        }
+        // 判断有没单个文件上传
+        if (requestObj.xy_fileConfig) {
+            [formData appendPartWithFileData:requestObj.xy_fileConfig.fileData
+                                        name:requestObj.xy_fileConfig.name
+                                    fileName:requestObj.xy_fileConfig.fileName
+                                    mimeType:requestObj.xy_fileConfig.mimeType];
+        }
+
+        
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         if (progress) {
             if (uploadProgress) {
@@ -268,6 +275,7 @@ static id _instance;
     if (xy_headers.count) {
         for (NSString *key in xy_headers.allKeys) {
             [self.sessionManager.requestSerializer setValue:xy_headers[key] forHTTPHeaderField:key];
+//            NSLog(@"value:%@----key:%@", xy_headers[key], key);
         }
     }
 //    if (xy_headers.count) {
@@ -330,6 +338,21 @@ static id _instance;
 }
 
 
+#pragma mark - lazy
+
+- (AFHTTPSessionManager *)sessionManager {
+    if (_sessionManager == nil) {
+        _sessionManager = [AFHTTPSessionManager manager];
+        _sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain", @"multipart/form-data", @"image/jpeg", @"image/png", @"text/plain", nil];
+        _sessionManager.requestSerializer.timeoutInterval = self.timeoutInterval;
+    }
+    return _sessionManager;
+}
+
+- (NSTimeInterval)timeoutInterval {
+    return _timeoutInterval ?: 10;
+}
+
 
 @end
 
@@ -354,6 +377,7 @@ static id _instance;
     return self;
 }
 
+#pragma mark - MimeType
 /**
  
  按照内容类型排列的 Mime 类型列表

@@ -61,7 +61,7 @@ typedef void (^ViewModelInfosBlock)();
 
 
 /**
- * @explain 加载数据
+ * 加载数据
  *
  * @param   requestBlock  通过此block回调一个网络请求对象，配置请求参数
  * @param   progress  请求进度回调

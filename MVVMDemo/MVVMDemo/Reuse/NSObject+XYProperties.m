@@ -51,9 +51,7 @@
     objc_setAssociatedObject(self, @selector(viewModelBlock), viewModelBlock, OBJC_ASSOCIATION_COPY);
 }
 
-/**
- *  mediator
- */
+
 - (void)setXy_mediator:(XYMediator *)xy_mediator {
     objc_setAssociatedObject(self, @selector(xy_mediator), xy_mediator, OBJC_ASSOCIATION_RETAIN);
 }
@@ -61,9 +59,6 @@
     return objc_getAssociatedObject(self, @selector(xy_mediator));
 }
 
-/**
- *  xy_viewMangerInfos
- */
 - (void)setXy_viewMangerInfos:(NSDictionary *)xy_viewMangerInfos {
     objc_setAssociatedObject(self, @selector(xy_viewMangerInfos), xy_viewMangerInfos, OBJC_ASSOCIATION_COPY);
 }
@@ -71,9 +66,6 @@
     return objc_getAssociatedObject(self, @selector(xy_viewMangerInfos));
 }
 
-/**
- *  xy_viewModelInfos
- */
 - (void)setXy_viewModelInfos:(NSDictionary *)xy_viewModelInfos {
     objc_setAssociatedObject(self, @selector(xy_viewModelInfos), xy_viewModelInfos, OBJC_ASSOCIATION_COPY);
 }

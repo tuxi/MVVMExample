@@ -7,6 +7,7 @@
 //
 
 #import "ThirdRequestItem.h"
+#import "NSObject+XYProperties.h"
 
 @implementation ThirdRequestItem
 
@@ -39,11 +40,15 @@
 
 - (NSDictionary *)xy_requestParameters {
     
-    return @{@"uid": self.uid, @"channel": self.channel, @"ver": self.ver, @"where": self.where, @"limt": self.limt, @"dtype": self.dtype, @"sversion": self.sversion, @"token": self.token, @"page": self.page, @"language": self.language, @"mtype": self.mtype};
+    NSLog(@"%@", self.xy_allProperties);
+//    NSLog(@"%@", self.description);
+    return self.xy_allProperties;
+//    return @{@"uid": self.uid, @"channel": self.channel, @"ver": self.ver, @"where": self.where, @"limt": self.limt, @"dtype": self.dtype, @"sversion": self.sversion, @"token": self.token, @"page": self.page, @"language": self.language, @"mtype": self.mtype};
     
 }
 
 - (NSString *)description {
+    
     return [NSString stringWithFormat:@"配置的请求参数为:{uid=%@, channel=%@, ver=%@, where=%@, limt=%@, dtype=%@, sversion=%@, token=%@, page=%@, language=%@, mtype=%@}", self.uid, self.channel, self.ver, self.where, self.limt, self.dtype, self.sversion, self.token, self.page, self.language, self.mtype];
 }
 

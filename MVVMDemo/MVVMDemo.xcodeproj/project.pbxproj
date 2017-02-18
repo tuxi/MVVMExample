@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		180536331E57FED90070D26E /* XYHomePageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 180536321E57FED90070D26E /* XYHomePageViewModel.m */; };
 		180536361E5800540070D26E /* HomePageRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 180536351E5800540070D26E /* HomePageRequestItem.m */; };
+		1805365C1E585EB20070D26E /* MessageRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1805365B1E585EB20070D26E /* MessageRequestItem.m */; };
+		1805365F1E5861A60070D26E /* MessageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1805365E1E5861A60070D26E /* MessageViewModel.m */; };
+		180536621E5878F30070D26E /* UploadRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 180536611E5878F30070D26E /* UploadRequestItem.m */; };
 		1827C0581E4C741D0080AB27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C0571E4C741D0080AB27 /* main.m */; };
 		1827C2131E4E21620080AB27 /* NSObject+XYProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C1FE1E4E21620080AB27 /* NSObject+XYProperties.m */; };
 		1827C2141E4E21620080AB27 /* NSObject+XYRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C2001E4E21620080AB27 /* NSObject+XYRequest.m */; };
@@ -174,6 +177,12 @@
 		180536321E57FED90070D26E /* XYHomePageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYHomePageViewModel.m; sourceTree = "<group>"; };
 		180536341E5800540070D26E /* HomePageRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageRequestItem.h; sourceTree = "<group>"; };
 		180536351E5800540070D26E /* HomePageRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageRequestItem.m; sourceTree = "<group>"; };
+		1805365A1E585EB20070D26E /* MessageRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageRequestItem.h; sourceTree = "<group>"; };
+		1805365B1E585EB20070D26E /* MessageRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageRequestItem.m; sourceTree = "<group>"; };
+		1805365D1E5861A60070D26E /* MessageViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewModel.h; sourceTree = "<group>"; };
+		1805365E1E5861A60070D26E /* MessageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewModel.m; sourceTree = "<group>"; };
+		180536601E5878F30070D26E /* UploadRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadRequestItem.h; sourceTree = "<group>"; };
+		180536611E5878F30070D26E /* UploadRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadRequestItem.m; sourceTree = "<group>"; };
 		1827C0531E4C741D0080AB27 /* MVVMDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1827C0571E4C741D0080AB27 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1827C1FD1E4E21620080AB27 /* NSObject+XYProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+XYProperties.h"; sourceTree = "<group>"; };
@@ -1194,6 +1203,10 @@
 		18C85F801E50AD3B00C615EA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1805365A1E585EB20070D26E /* MessageRequestItem.h */,
+				1805365B1E585EB20070D26E /* MessageRequestItem.m */,
+				180536601E5878F30070D26E /* UploadRequestItem.h */,
+				180536611E5878F30070D26E /* UploadRequestItem.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1217,6 +1230,8 @@
 		18C85F851E50AD3B00C615EA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1805365D1E5861A60070D26E /* MessageViewModel.h */,
+				1805365E1E5861A60070D26E /* MessageViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1501,6 +1516,7 @@
 				18C860351E50AD3B00C615EA /* MessageViewController.m in Sources */,
 				18C85FEE1E50AD3B00C615EA /* MJRefreshAutoGifFooter.m in Sources */,
 				18C860461E50AD3B00C615EA /* XYLoadingView.m in Sources */,
+				1805365F1E5861A60070D26E /* MessageViewModel.m in Sources */,
 				1827C0581E4C741D0080AB27 /* main.m in Sources */,
 				18C85FFF1E50AD3B00C615EA /* README.md in Sources */,
 				18C860021E50AD3B00C615EA /* SDWebImageCompat.m in Sources */,
@@ -1565,6 +1581,7 @@
 				18C8601B1E50AD3B00C615EA /* UITableView+SUIHelper.m in Sources */,
 				18C85FC91E50AD3B00C615EA /* AFURLSessionManager.m in Sources */,
 				18C860431E50AD3B00C615EA /* SecondTableView_ViewModel.m in Sources */,
+				180536621E5878F30070D26E /* UploadRequestItem.m in Sources */,
 				18C85FE91E50AD3B00C615EA /* MJRefreshAutoFooter.m in Sources */,
 				18C85FF61E50AD3B00C615EA /* MJRefreshStateHeader.m in Sources */,
 				18C860111E50AD3B00C615EA /* NSDate+SUIAdditions.m in Sources */,
@@ -1585,6 +1602,7 @@
 				18C85FCB1E50AD3B00C615EA /* README.md in Sources */,
 				18C85FD91E50AD3B00C615EA /* FMDatabasePool.m in Sources */,
 				18C8602D1E50AD3B00C615EA /* UIViewController+SUIAdditions.m in Sources */,
+				1805365C1E585EB20070D26E /* MessageRequestItem.m in Sources */,
 				18C8600B1E50AD3B00C615EA /* UIImageView+HighlightedWebCache.m in Sources */,
 				18C860081E50AD3B00C615EA /* UIButton+WebCache.m in Sources */,
 				18C85FC21E50AD3B00C615EA /* Foundation+Log.m in Sources */,
