@@ -7,6 +7,9 @@
 //
 
 #import "MeViewController.h"
+#import <AVFoundation/AVFoundation.h>
+#import <MobileCoreServices/MobileCoreServices.h>
+
 
 @interface MeViewController ()
 

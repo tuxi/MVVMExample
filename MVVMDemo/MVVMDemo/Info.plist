@@ -18,6 +18,8 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -25,6 +27,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>App需要访问您的相机~~</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>App需要访问您的麦克风~~</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>App需要访问您的相册~~</string>
 	<key>UIRequiredDeviceCapabilities</key>

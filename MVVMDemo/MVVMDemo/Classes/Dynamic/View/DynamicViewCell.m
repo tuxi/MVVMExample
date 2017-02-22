@@ -170,7 +170,8 @@
             
             if (i < item.content.image.count) { // 根据真实服务器返回图片的数量决定
                 imageView.hidden = NO;
-                [imageView sd_setImageWithURL:[NSURL URLWithString:item.content.image[i]]];
+#warning TODO: 此处在加载图片时，App会出现间隙性闪退
+                [imageView sd_setImageWithURL:[NSURL URLWithString:item.content.image[i]] placeholderImage:nil options:SDWebImageLowPriority];
                 
                 /// 每个图片所在的列数和行数
                 NSInteger column = i % columns;
@@ -198,7 +199,7 @@
 - (CGFloat)calculateCommentContentH:(DynamicItem *)item {
     CGFloat commentContentH = 0;
     if (item.content.comments.count == 0) {
-        _commentContentView.backgroundColor = [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0];
+//        _commentContentView.backgroundColor = [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0];
         commentContentH = 0;
         _commentContentView.hidden = YES;
     } else {
