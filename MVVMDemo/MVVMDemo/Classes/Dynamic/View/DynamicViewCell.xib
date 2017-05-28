@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="379"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="378"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="378.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aui-15-AHy">
@@ -152,21 +152,28 @@
                         </constraints>
                         <state key="normal" image="moment_xiala"/>
                     </button>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bm0-f3-I1X">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="zrv-m3-2vR" customClass="DynamicPicContentView">
                         <rect key="frame" x="10" y="98.5" width="300" height="57"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="57" id="EQs-d3-aZu"/>
+                            <constraint firstAttribute="height" constant="57" id="iCr-jJ-ugt"/>
                         </constraints>
-                    </view>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Yao-1f-GhK">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="MZa-eW-KSx" secondAttribute="trailing" id="2pC-D4-yz7"/>
+                    <constraint firstAttribute="trailing" secondItem="zrv-m3-2vR" secondAttribute="trailing" constant="10" id="3wX-oL-wRq"/>
                     <constraint firstItem="SnW-u7-Pbg" firstAttribute="top" secondItem="A6J-Dr-pLw" secondAttribute="bottom" id="42B-X3-kR6"/>
                     <constraint firstItem="Gbf-Wp-T63" firstAttribute="bottom" secondItem="aui-15-AHy" secondAttribute="bottom" id="8Wk-Jh-zxf"/>
                     <constraint firstAttribute="trailing" secondItem="SnW-u7-Pbg" secondAttribute="trailing" id="AQu-vZ-QB2"/>
                     <constraint firstItem="Yj2-Bg-XJe" firstAttribute="top" secondItem="aui-15-AHy" secondAttribute="top" id="Aph-zw-Idr"/>
                     <constraint firstAttribute="bottom" secondItem="SnW-u7-Pbg" secondAttribute="bottom" id="B87-FT-XzW"/>
-                    <constraint firstItem="Bm0-f3-I1X" firstAttribute="leading" secondItem="aui-15-AHy" secondAttribute="leading" id="Ekm-n6-NNi"/>
                     <constraint firstItem="A6J-Dr-pLw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="FDo-GP-aRD"/>
                     <constraint firstItem="aui-15-AHy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="KOz-11-MlI"/>
                     <constraint firstItem="Gbf-Wp-T63" firstAttribute="leading" secondItem="aui-15-AHy" secondAttribute="trailing" constant="10" id="Lww-mj-kRD"/>
@@ -176,14 +183,14 @@
                     <constraint firstItem="ar7-bC-VOT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Q0J-Jm-F4G"/>
                     <constraint firstItem="MZa-eW-KSx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Scj-V6-Zt2"/>
                     <constraint firstItem="aui-15-AHy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="V5j-FU-OyH"/>
-                    <constraint firstAttribute="trailing" secondItem="Bm0-f3-I1X" secondAttribute="trailing" constant="10" id="Vgb-nM-Cow"/>
                     <constraint firstItem="A6J-Dr-pLw" firstAttribute="top" secondItem="MZa-eW-KSx" secondAttribute="bottom" constant="10" id="W0C-l5-WjA"/>
                     <constraint firstAttribute="trailing" secondItem="A6J-Dr-pLw" secondAttribute="trailing" id="Wuf-ee-QKj"/>
                     <constraint firstItem="7gb-3Y-eEz" firstAttribute="top" secondItem="Gbf-Wp-T63" secondAttribute="bottom" constant="8" id="an4-3W-wSB"/>
+                    <constraint firstItem="zrv-m3-2vR" firstAttribute="top" secondItem="4AN-sz-25J" secondAttribute="bottom" constant="10" id="by7-gN-Fhe"/>
                     <constraint firstAttribute="trailing" secondItem="4AN-sz-25J" secondAttribute="trailing" constant="10" id="cNn-NC-kaK"/>
                     <constraint firstAttribute="trailing" secondItem="ar7-bC-VOT" secondAttribute="trailing" id="dOE-3n-v2l"/>
                     <constraint firstItem="Yj2-Bg-XJe" firstAttribute="leading" secondItem="aui-15-AHy" secondAttribute="trailing" constant="10" id="eaq-ID-l2Z"/>
-                    <constraint firstItem="Bm0-f3-I1X" firstAttribute="top" secondItem="4AN-sz-25J" secondAttribute="bottom" constant="10" id="jWN-IJ-WIH"/>
+                    <constraint firstItem="zrv-m3-2vR" firstAttribute="leading" secondItem="aui-15-AHy" secondAttribute="leading" id="gO5-tG-dlH"/>
                     <constraint firstItem="4AN-sz-25J" firstAttribute="leading" secondItem="aui-15-AHy" secondAttribute="leading" id="jea-gC-REu"/>
                     <constraint firstAttribute="trailing" secondItem="m2Z-kH-crJ" secondAttribute="trailing" constant="10" id="k1v-2c-vtR"/>
                     <constraint firstItem="4AN-sz-25J" firstAttribute="top" secondItem="7gb-3Y-eEz" secondAttribute="bottom" constant="10" id="lz2-jd-KMg"/>
@@ -199,8 +206,8 @@
                 <outlet property="iconView" destination="aui-15-AHy" id="qki-gW-EUh"/>
                 <outlet property="likeNum" destination="vc9-rK-JU9" id="r0r-4d-KNI"/>
                 <outlet property="nameLabel" destination="Yj2-Bg-XJe" id="gHk-Lg-58a"/>
-                <outlet property="picContentView" destination="Bm0-f3-I1X" id="1ph-jw-zCu"/>
-                <outlet property="picContentViewConstranitH" destination="EQs-d3-aZu" id="C2P-OW-tYL"/>
+                <outlet property="picContentView" destination="zrv-m3-2vR" id="QmY-hJ-q8H"/>
+                <outlet property="picContentViewConstranitH" destination="iCr-jJ-ugt" id="tXe-v4-lNW"/>
                 <outlet property="postLabel" destination="Gbf-Wp-T63" id="Vq6-GT-vOg"/>
                 <outlet property="publishTime" destination="2vM-u9-8to" id="NcI-7y-LMY"/>
                 <outlet property="shareNum" destination="rQT-Lz-aLi" id="ZHI-Yb-ECu"/>

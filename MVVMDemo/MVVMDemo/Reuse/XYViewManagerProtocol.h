@@ -30,21 +30,21 @@ typedef void (^ViewMangerInfosBlock)( );
 - (void)xy_notify;
 
 /**
- * @explain 设置控制器的子视图的管理者为self
+ *  设置控制器的子视图的管理者为self
  *
  * @param   superView  一般指superView所在的控制器的根view
  */
 - (void)xy_viewManagerWithSuperView:(UIView *)superView;
 
 /**
- * @explain 设置subView的管理者为self
+ *  设置subView的管理者为self
  *
  * @param   subView 管理的subview
  */
 - (void)xy_viewManagerWithSubView:(UIView *)subView;
 
 /**
- * @explain 设置添加subView的事件
+ *  设置添加subView的事件
  *
  * @param   subView  管理的subView
  * @param   info  附带信息 用于区分回调
@@ -52,37 +52,37 @@ typedef void (^ViewMangerInfosBlock)( );
 - (void)xy_viewManagerWithHandleOfSubView:(UIView *)subView info:(NSString *)info;
 
 /**
- * @explain 返回viewManager所管理的视图
+ *  返回viewManager所管理的视图
  * @return  view
  */
 - (__kindof UIView *)xy_viewManagerOfSubView;
 
 /**
- * @explain 得到其他viewManager所管理的subview 用户自己内部
+ *  得到其他viewManager所管理的subview 用户自己内部
  *
  * @param   viewInfos  其他的subViews
  */
 - (void)xy_viewManagerWithOtherSubviews:(NSDictionary *)viewInfos;
 
 /**
- * @explain 需要重新布局subView时，更新subview的frame或约束
+ *  需要重新布局subView时，更新subview的frame或约束
  *
  * @param   updateBlock  布局更新完成后的回调
  */
 - (void)xy_viewManagerWithLayoutSubviews:(void (^)())updateBlock;
 
 /**
- * @explain 使子视图更新到最新的布局约束或frame
+ *  使子视图更新到最新的布局约束或frame
  */
 - (void)xy_viewManagerWithUpdateLayoutSubviews;
 
 /**
- * @explain 将模型数据传递给viewManager
+ *  将模型数据传递给viewManager
  */
 - (void)xy_viewManagerWithModel:(NSDictionary *(^)())block;
 
 /**
- * @explain 处理viewBlock的事件
+ *  处理viewBlock的事件
  */
 - (void(^)())xy_viewManagerWithViewEventBlockOfInfos:(NSDictionary *)infos;
 

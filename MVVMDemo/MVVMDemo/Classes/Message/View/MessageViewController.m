@@ -144,7 +144,11 @@
 - (UIImagePickerController *)imgPC {
     if (_imgPC == nil) {
         _imgPC = [UIImagePickerController new];
-        _imgPC.sourceType = UIImagePickerControllerSourceTypeCamera;
+        if ([self isCameraAvailable]) {
+            _imgPC.sourceType = UIImagePickerControllerSourceTypeCamera;
+        } else {
+            _imgPC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        }
         _imgPC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
 //        _imgPC.mediaTypes = [NSArray arrayWithObjects:(NSString *)kUTTypeMovie, nil];
         _imgPC.allowsEditing = YES;
@@ -152,6 +156,7 @@
     }
     return _imgPC;
 }
+
 - (void)btnClick:(UIButton *)b {
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         NSArray *availableMediaTypes = [UIImagePickerController
@@ -213,5 +218,21 @@
     
 }
 
+
+#pragma mark - 摄像头和相册相关的公共类
+// 判断设备是否有摄像头
+- (BOOL)isCameraAvailable{
+    return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+}
+
+// 前面的摄像头是否可用
+- (BOOL)isFrontCameraAvailable{
+    return [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront];
+}
+
+// 后面的摄像头是否可用
+- (BOOL)isRearCameraAvailable{
+    return [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear];
+}
 
 @end

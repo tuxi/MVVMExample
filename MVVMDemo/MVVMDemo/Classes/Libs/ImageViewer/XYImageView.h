@@ -34,7 +34,7 @@
 
 
 /**
- * @explain 动画显示
+ *  动画显示
  *
  * @param   rect            从哪个位置开始做动画
  * @param   animationBlock  附带的动画信息
@@ -44,7 +44,7 @@
 
 
 /**
- * @explain 动画消失
+ *  动画消失
  *
  * @param   rect            回到哪个位置
  * @param   animationBlock  附带的动画信息

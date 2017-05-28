@@ -7,18 +7,17 @@
 //
 
 #import "DynamicViewController.h"
-#import "ThirdTableViewModel.h"
-#import "ThirdViewModel.h"
-#import "SUIUtils.h"
+#import "DynamicTableViewModel.h"
+#import "DynamicRequestViewModel.h"
 #import "UIView+XYLoading.h"
 #import "XYRefreshGifHeader.h"
 #import "XYRefreshFooter.h"
-#import "ThirdRequestItem.h"
+#import "SDImageCache.h"
 
 @interface DynamicViewController ()
 @property (nonatomic, weak)  UITableView *tableView;
-@property (nonatomic, strong) ThirdTableViewModel *tableViewModel;
-@property (nonatomic, strong) ThirdViewModel *viewModel;
+@property (nonatomic, strong) DynamicTableViewModel *tableViewModel;
+@property (nonatomic, strong) DynamicRequestViewModel *requestViewModel;
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, strong) NSMutableArray *loadingImages;
 @end
@@ -29,6 +28,12 @@
     
     self.title = @"动态";
     [self initTableView];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    
+    [[SDImageCache sharedImageCache] setValue:nil forKey:@"memCache"];
 }
 
 
@@ -42,7 +47,7 @@
     [self.tableViewModel prepareTableView:self.tableView];
     
     // 加载数据
-    uWeakSelf
+    __weak typeof(self) weakSelf = self;
     self.tableView.mj_header = [XYRefreshGifHeader headerWithRefreshingBlock:^{
         weakSelf.currentPage = 1;
         [weakSelf loadDataFromNetworkByPage:weakSelf.currentPage];
@@ -66,53 +71,54 @@
 - (void)loadDataFromNetworkByPage:(NSInteger)page {
     
     [self.tableView loading];
-    [self.viewModel xy_viewModelWithConfigRequest:^(id requestItem) {
-        ThirdRequestItem *item = (ThirdRequestItem *)requestItem;
+    __weak typeof(self) weakSelf = self;
+    [self.requestViewModel xy_viewModelWithConfigRequest:^(id requestItem) {
+        DynamicRequestItem *item = (DynamicRequestItem *)requestItem;
         item.page = @(page);
     }
                                      progress:nil
                                       success:^(id responseObject) {
                                           
-                                          [self.tableView loadFinished];
+                                          [weakSelf.tableView loadFinished];
                                           
-                                          if (self.currentPage == 1) {
+                                          if (weakSelf.currentPage == 1) {
                                               
-                                              [self.tableViewModel removeAllObjctFromDataSource];
+                                              [weakSelf.tableViewModel removeAllObjctFromDataSource];
                                           }
                                           
-                                          [self.tableViewModel getDataSourceBlock:^NSArray *{
+                                          [weakSelf.tableViewModel getDataSourceBlock:^NSArray *{
                                               return responseObject;
                                           } completion:^{
-                                              [self.tableView reloadData];
-                                              [self.tableView.mj_header endRefreshing];
-                                              [self.tableView.mj_footer endRefreshing];
+                                              [weakSelf.tableView reloadData];
+                                              [weakSelf.tableView.mj_header endRefreshing];
+                                              [weakSelf.tableView.mj_footer endRefreshing];
                                           }];
                                           
                                       } failure:^(NSError *error) {
-                                          if (self.currentPage > 1) {
-                                              self.currentPage--;
+                                          if (weakSelf.currentPage > 1) {
+                                              weakSelf.currentPage--;
                                           }
-                                          [self.tableView loadFailure];
-                                          [self.tableView.mj_header endRefreshing];
-                                          [self.tableView.mj_footer endRefreshing];
+                                          [weakSelf.tableView loadFailure];
+                                          [weakSelf.tableView.mj_header endRefreshing];
+                                          [weakSelf.tableView.mj_footer endRefreshing];
                                           NSLog(@"%@", error.localizedDescription);
                                       }];
 }
 
 
 #pragma mark - lazy
-- (ThirdTableViewModel *)tableViewModel {
+- (DynamicTableViewModel *)tableViewModel {
     if (_tableViewModel == nil) {
-        _tableViewModel = [ThirdTableViewModel new];
+        _tableViewModel = [DynamicTableViewModel new];
     }
     return _tableViewModel;
 }
 
-- (ThirdViewModel *)viewModel {
-    if (_viewModel == nil) {
-        _viewModel = [ThirdViewModel new];
+- (DynamicRequestViewModel *)requestViewModel {
+    if (_requestViewModel == nil) {
+        _requestViewModel = [DynamicRequestViewModel new];
     }
-    return _viewModel;
+    return _requestViewModel;
 }
 
 - (NSMutableArray<UIImage *> *)loadingImages {
@@ -137,6 +143,7 @@
 
 - (void)dealloc {
     NSLog(@"%s", __func__);
+    [[SDWebImageManager sharedManager].imageCache clearMemory];
 }
 
 @end

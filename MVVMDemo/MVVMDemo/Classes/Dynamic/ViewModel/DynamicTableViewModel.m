@@ -1,12 +1,12 @@
 //
-//  ThirdTableViewModel.m
+//  DynamicTableViewModel.m
 //  MVVMDemo
 //
 //  Created by mofeini on 17/2/11.
 //  Copyright © 2017年 com.test.demo. All rights reserved.
 //
 
-#import "ThirdTableViewModel.h"
+#import "DynamicTableViewModel.h"
 #import "UITableViewCell+XYConfigure.h"
 #import "DynamicViewCell.h"
 #import "UITableView+FDTemplateLayoutCell.h"
@@ -14,13 +14,13 @@
 
 static NSString *const myCellIdentifier = @"DynamicViewCell";
 
-@interface ThirdTableViewModel ()
+@interface DynamicTableViewModel ()
 
 @property (nonatomic, strong) NSMutableArray *dataSource;
 
 @end
 
-@implementation ThirdTableViewModel
+@implementation DynamicTableViewModel
 
 #pragma mark - public
 - (void)prepareTableView:(UITableView *)tableView {
@@ -33,10 +33,17 @@ static NSString *const myCellIdentifier = @"DynamicViewCell";
     if (dataSource) {
         
         // 将模型数据添加到数组中
-        [self.dataSource addObjectsFromArray:dataSource()];
+        NSArray *list = dataSource();
+        if ([list isKindOfClass:[NSArray class]]) {
+            if (!self.dataSource) {
+                self.dataSource = [NSMutableArray arrayWithCapacity:0];
+            }
+            [self.dataSource addObjectsFromArray:list];
+        }
         if (completion) {
             completion();
         }
+        list = nil;
         
     }
 }
@@ -80,6 +87,11 @@ static NSString *const myCellIdentifier = @"DynamicViewCell";
 
 - (id)itemAtIndexPath:(NSIndexPath *)indexPath {
     return self.dataSource[indexPath.row];
+}
+
+- (void)dealloc {
+    [self removeAllObjctFromDataSource];
+    self.dataSource = nil;
 }
 
 @end

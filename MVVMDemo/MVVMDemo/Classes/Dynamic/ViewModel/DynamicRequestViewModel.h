@@ -1,5 +1,5 @@
 //
-//  ThirdViewModel.h
+//  DynamicRequestViewModel.h
 //  MVVMDemo
 //
 //  Created by mofeini on 17/2/11.
@@ -7,7 +7,8 @@
 //  此类主要作用是网络请求和数据的处理
 
 #import "XYViewModelProtocol.h"
+#import "DynamicRequestItem.h"
 
-@interface ThirdViewModel : NSObject<XYViewModelProtocol>
+@interface DynamicRequestViewModel : NSObject<XYViewModelProtocol>
 
 @end

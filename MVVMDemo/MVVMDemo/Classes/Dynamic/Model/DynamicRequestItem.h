@@ -1,5 +1,5 @@
 //
-//  ThirdRequestItem.h
+//  DynamicRequestItem.h
 //  MVVMDemo
 //
 //  Created by mofeini on 17/2/11.
@@ -9,7 +9,7 @@
 #import "XYRequestProtocol.h"
 #import "NSObject+XYRequest.h"
 
-@interface ThirdRequestItem : NSObject<XYRequestProtocol>
+@interface DynamicRequestItem : NSObject<XYRequestProtocol>
 
 /// 请求参数
 @property (nonatomic, copy) NSNumber *uid;

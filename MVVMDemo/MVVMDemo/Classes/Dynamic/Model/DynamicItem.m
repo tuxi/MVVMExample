@@ -28,6 +28,10 @@
    
 }
 
+- (void)dealloc {
+    
+}
+
 @end
 
 @implementation ThirdContentItem
@@ -47,6 +51,10 @@
     if ([key isEqualToString:@"id"]) {
         self.ID = value;
     }
+}
+
+- (void)dealloc {
+    
 }
 
 @end

@@ -23,12 +23,12 @@
 		1827C21A1E4E21620080AB27 /* XYDBUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C20C1E4E21620080AB27 /* XYDBUtil.m */; };
 		1827C21B1E4E21620080AB27 /* XYMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C20E1E4E21620080AB27 /* XYMediator.m */; };
 		18C85FBB1E50AD3B00C615EA /* DynamicItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C85E661E50AD3B00C615EA /* DynamicItem.m */; };
-		18C85FBC1E50AD3B00C615EA /* ThirdRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C85E681E50AD3B00C615EA /* ThirdRequestItem.m */; };
+		18C85FBC1E50AD3B00C615EA /* DynamicRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C85E681E50AD3B00C615EA /* DynamicRequestItem.m */; };
 		18C85FBD1E50AD3B00C615EA /* DynamicViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C85E6B1E50AD3B00C615EA /* DynamicViewCell.m */; };
 		18C85FBE1E50AD3B00C615EA /* DynamicViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C85E6C1E50AD3B00C615EA /* DynamicViewCell.xib */; };
 		18C85FBF1E50AD3B00C615EA /* DynamicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C85E6E1E50AD3B00C615EA /* DynamicViewController.m */; };
-		18C85FC01E50AD3B00C615EA /* ThirdTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C85E721E50AD3B00C615EA /* ThirdTableViewModel.m */; };
-		18C85FC11E50AD3B00C615EA /* ThirdViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C85E741E50AD3B00C615EA /* ThirdViewModel.m */; };
+		18C85FC01E50AD3B00C615EA /* DynamicTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C85E721E50AD3B00C615EA /* DynamicTableViewModel.m */; };
+		18C85FC11E50AD3B00C615EA /* DynamicRequestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C85E741E50AD3B00C615EA /* DynamicRequestViewModel.m */; };
 		18C85FC21E50AD3B00C615EA /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C85E771E50AD3B00C615EA /* Foundation+Log.m */; };
 		18C85FC31E50AD3B00C615EA /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C85E7C1E50AD3B00C615EA /* HomePageViewController.m */; };
 		18C85FC41E50AD3B00C615EA /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C85E831E50AD3B00C615EA /* AFHTTPSessionManager.m */; };
@@ -209,17 +209,17 @@
 		1827C2121E4E21620080AB27 /* XYViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYViewProtocol.h; sourceTree = "<group>"; };
 		18C85E651E50AD3B00C615EA /* DynamicItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicItem.h; sourceTree = "<group>"; };
 		18C85E661E50AD3B00C615EA /* DynamicItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicItem.m; sourceTree = "<group>"; };
-		18C85E671E50AD3B00C615EA /* ThirdRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdRequestItem.h; sourceTree = "<group>"; };
-		18C85E681E50AD3B00C615EA /* ThirdRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdRequestItem.m; sourceTree = "<group>"; };
+		18C85E671E50AD3B00C615EA /* DynamicRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicRequestItem.h; sourceTree = "<group>"; };
+		18C85E681E50AD3B00C615EA /* DynamicRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicRequestItem.m; sourceTree = "<group>"; };
 		18C85E6A1E50AD3B00C615EA /* DynamicViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicViewCell.h; sourceTree = "<group>"; };
 		18C85E6B1E50AD3B00C615EA /* DynamicViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicViewCell.m; sourceTree = "<group>"; };
 		18C85E6C1E50AD3B00C615EA /* DynamicViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DynamicViewCell.xib; sourceTree = "<group>"; };
 		18C85E6D1E50AD3B00C615EA /* DynamicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicViewController.h; sourceTree = "<group>"; };
 		18C85E6E1E50AD3B00C615EA /* DynamicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicViewController.m; sourceTree = "<group>"; };
-		18C85E711E50AD3B00C615EA /* ThirdTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdTableViewModel.h; sourceTree = "<group>"; };
-		18C85E721E50AD3B00C615EA /* ThirdTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdTableViewModel.m; sourceTree = "<group>"; };
-		18C85E731E50AD3B00C615EA /* ThirdViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdViewModel.h; sourceTree = "<group>"; };
-		18C85E741E50AD3B00C615EA /* ThirdViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewModel.m; sourceTree = "<group>"; };
+		18C85E711E50AD3B00C615EA /* DynamicTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicTableViewModel.h; sourceTree = "<group>"; };
+		18C85E721E50AD3B00C615EA /* DynamicTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicTableViewModel.m; sourceTree = "<group>"; };
+		18C85E731E50AD3B00C615EA /* DynamicRequestViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicRequestViewModel.h; sourceTree = "<group>"; };
+		18C85E741E50AD3B00C615EA /* DynamicRequestViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicRequestViewModel.m; sourceTree = "<group>"; };
 		18C85E771E50AD3B00C615EA /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		18C85E7B1E50AD3B00C615EA /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
 		18C85E7C1E50AD3B00C615EA /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
@@ -620,8 +620,8 @@
 			children = (
 				18C85E651E50AD3B00C615EA /* DynamicItem.h */,
 				18C85E661E50AD3B00C615EA /* DynamicItem.m */,
-				18C85E671E50AD3B00C615EA /* ThirdRequestItem.h */,
-				18C85E681E50AD3B00C615EA /* ThirdRequestItem.m */,
+				18C85E671E50AD3B00C615EA /* DynamicRequestItem.h */,
+				18C85E681E50AD3B00C615EA /* DynamicRequestItem.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -648,10 +648,10 @@
 		18C85E701E50AD3B00C615EA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				18C85E711E50AD3B00C615EA /* ThirdTableViewModel.h */,
-				18C85E721E50AD3B00C615EA /* ThirdTableViewModel.m */,
-				18C85E731E50AD3B00C615EA /* ThirdViewModel.h */,
-				18C85E741E50AD3B00C615EA /* ThirdViewModel.m */,
+				18C85E711E50AD3B00C615EA /* DynamicTableViewModel.h */,
+				18C85E721E50AD3B00C615EA /* DynamicTableViewModel.m */,
+				18C85E731E50AD3B00C615EA /* DynamicRequestViewModel.h */,
+				18C85E741E50AD3B00C615EA /* DynamicRequestViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1544,7 +1544,7 @@
 				18C85FC51E50AD3B00C615EA /* AFNetworkReachabilityManager.m in Sources */,
 				1827C2141E4E21620080AB27 /* NSObject+XYRequest.m in Sources */,
 				18C85FC31E50AD3B00C615EA /* HomePageViewController.m in Sources */,
-				18C85FC11E50AD3B00C615EA /* ThirdViewModel.m in Sources */,
+				18C85FC11E50AD3B00C615EA /* DynamicRequestViewModel.m in Sources */,
 				18C860331E50AD3B00C615EA /* MainTabBarController.m in Sources */,
 				18C860371E50AD3B00C615EA /* FirstModel.m in Sources */,
 				1827C2131E4E21620080AB27 /* NSObject+XYProperties.m in Sources */,
@@ -1608,14 +1608,14 @@
 				18C85FC21E50AD3B00C615EA /* Foundation+Log.m in Sources */,
 				1827C2171E4E21620080AB27 /* UIView+Events.m in Sources */,
 				18C85FEC1E50AD3B00C615EA /* MJRefreshFooter.m in Sources */,
-				18C85FC01E50AD3B00C615EA /* ThirdTableViewModel.m in Sources */,
+				18C85FC01E50AD3B00C615EA /* DynamicTableViewModel.m in Sources */,
 				18C860051E50AD3B00C615EA /* SDWebImageDownloaderOperation.m in Sources */,
 				18C860381E50AD3B00C615EA /* FirstRequest.m in Sources */,
 				18C8603D1E50AD3B00C615EA /* FirstViewModel.m in Sources */,
 				18C85FBF1E50AD3B00C615EA /* DynamicViewController.m in Sources */,
 				18C85FBB1E50AD3B00C615EA /* DynamicItem.m in Sources */,
 				1827C2161E4E21620080AB27 /* UITableViewCell+XYConfigure.m in Sources */,
-				18C85FBC1E50AD3B00C615EA /* ThirdRequestItem.m in Sources */,
+				18C85FBC1E50AD3B00C615EA /* DynamicRequestItem.m in Sources */,
 				18C860011E50AD3B00C615EA /* SDImageCache.m in Sources */,
 				18C8601F1E50AD3B00C615EA /* SUITool+FileManager.m in Sources */,
 				18C85FF11E50AD3B00C615EA /* MJRefreshBackGifFooter.m in Sources */,

@@ -1,5 +1,5 @@
 //
-//  ThirdTableViewModel.h
+//  DynamicTableViewModel.h
 //  MVVMDemo
 //
 //  Created by mofeini on 17/2/11.
@@ -8,7 +8,7 @@
 
 #import "XYTableViewModelProtocol.h"
 
-@interface ThirdTableViewModel : NSObject<XYTableViewModelProtocol>
+@interface DynamicTableViewModel : NSObject<XYTableViewModelProtocol>
 
 
 @end

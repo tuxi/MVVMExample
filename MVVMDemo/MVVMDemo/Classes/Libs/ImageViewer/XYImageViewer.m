@@ -71,21 +71,21 @@ static id _instance = nil;
 }
 
 
-- (XYImageViewer *)prepareImageURLList:(NSArray<NSString *> *)URLList endView:(UIView *(^)(NSIndexPath *indexPath))endViewBlock {
++ (XYImageViewer *)prepareImageURLList:(NSArray<NSString *> *)URLList endView:(UIView *(^)(NSIndexPath *indexPath))endViewBlock {
     
-    _urlStrList = URLList;
-    _endViewBlock = endViewBlock;
-    _requestFromNetwork = YES;
+    [XYImageViewer shareInstance]->_urlStrList = URLList;
+    [XYImageViewer shareInstance]->_endViewBlock = endViewBlock;
+    [XYImageViewer shareInstance]->_requestFromNetwork = YES;
     
     return [XYImageViewer shareInstance];
 }
 
 
-- (XYImageViewer *)prepareImages:(NSArray<NSString *> *)images endView:(UIView *(^)(NSIndexPath *))endViewBlock {
++ (XYImageViewer *)prepareImages:(NSArray<NSString *> *)images endView:(UIView *(^)(NSIndexPath *))endViewBlock {
     
-    _images = images;
-    _endViewBlock = endViewBlock;
-    _requestFromNetwork = NO;
+    [XYImageViewer shareInstance]->_images = images;
+    [XYImageViewer shareInstance]->_endViewBlock = endViewBlock;
+    [XYImageViewer shareInstance]->_requestFromNetwork = NO;
     
     NSMutableArray *tempArrM = [NSMutableArray arrayWithCapacity:1];
     for (NSString *imageName in images) {
@@ -93,7 +93,7 @@ static id _instance = nil;
         [tempArrM addObject:[NSValue valueWithCGSize:image.size]];
     }
     
-    self.imageSizes = [tempArrM mutableCopy];
+    [XYImageViewer shareInstance].imageSizes = [tempArrM mutableCopy];
     tempArrM = nil;
     return [XYImageViewer shareInstance];
 }

@@ -1,28 +1,28 @@
 //
-//  ThirdViewModel.m
+//  DynamicRequestViewModel.m
 //  MVVMDemo
 //
 //  Created by mofeini on 17/2/11.
 //  Copyright © 2017年 com.test.demo. All rights reserved.
 //
 
-#import "ThirdViewModel.h"
+#import "DynamicRequestViewModel.h"
 #import "XYNetworkRequest.h"
-#import "ThirdRequestItem.h"
+#import "DynamicRequestItem.h"
 #import "DynamicItem.h"
 
-@interface ThirdViewModel ()
+@interface DynamicRequestViewModel ()
 
 /// 网络请求对象
-@property (nonatomic, strong) ThirdRequestItem *item;
+@property (nonatomic, strong) DynamicRequestItem *item;
 
 @end
 
-@implementation ThirdViewModel
+@implementation DynamicRequestViewModel
 
-- (ThirdRequestItem *)item {
+- (DynamicRequestItem *)item {
     if (_item == nil) {
-        _item = [ThirdRequestItem new];
+        _item = [DynamicRequestItem new];
     }
     return _item;
 }
@@ -51,7 +51,11 @@
                                           /// code为0，说明请求数据成功
                                           for (id obj in responseObject[@"data"][@"list"]) {
                                               if ([obj isKindOfClass:[NSDictionary class]]) {
-                                                  [arrayList addObject:[DynamicItem itemWithDict:obj]];
+                                                  @autoreleasepool {
+                                                      if ([obj[@"content"] isKindOfClass:[NSDictionary class]] && [obj[@"content"] count]) {
+                                                          [arrayList addObject:[DynamicItem itemWithDict:obj]];
+                                                      }
+                                                  }
                                               }
                                           }
                                       }
@@ -60,6 +64,9 @@
                                   if (success) {
                                       success(arrayList);
                                   }
+                                  [arrayList removeAllObjects];
+                                  arrayList = nil;
+                                  
                               }
                               failure:^(NSError *error) {
                                   if (failure) {
@@ -70,5 +77,8 @@
     return task;
 }
 
+- (void)dealloc {
+
+}
 
 @end

@@ -7,7 +7,25 @@
 //
 
 #import "UITableViewCell+XYConfigure.h"
+#import "XYCollectionViewModelProtocol.h"
+
+@class DynamicPicContentViewModel;
 
 @interface DynamicViewCell : UITableViewCell
+
+@end
+
+@interface DynamicPicContentView : UICollectionView
+{
+@public
+    DynamicPicContentViewModel *_viewModel;
+}
+@end
+
+@interface DynamicPicContentViewModel : NSObject <XYCollectionViewModelProtocol>
+
+@end
+
+@interface DynamicPicContentViewCell : UICollectionViewCell
 
 @end
