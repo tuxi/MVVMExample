@@ -253,9 +253,11 @@
     __weak typeof(collectionView) weakCollectionView = collectionView;
     
 //    NSIndexPath *orginIndexPath = indexPath;
+    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
     
     [[XYImageViewer prepareImageURLList:self.dataSource
-                                                endView:^UIView *(NSIndexPath *indexPath) {
+                           pageTextList:nil
+                                endView:^UIView *(NSIndexPath *indexPath) {
                                                     
                                                     // 当collectionViewCell 未显示的时候调用cellForItemAtIndexPath返回的可能为nil，这里让视图先滚动到那个cell，让其显示，再layoutIfNeeded刷新下，就可以获取到cell了，如果最终还是要显示原indexPath，可以再滚回来
                                                     
@@ -276,7 +278,7 @@
 //                                                    [weakCollectionView scrollToItemAtIndexPath:orginIndexPath atScrollPosition:0 animated:NO];
                                                     
                                                     return endView;
-                                                }] show:[weakCollectionView cellForItemAtIndexPath:indexPath] currentImgIndex:indexPath.row];
+                                                }] show:cell currentIndex:indexPath.row];
 }
 
 #pragma mark - Get
