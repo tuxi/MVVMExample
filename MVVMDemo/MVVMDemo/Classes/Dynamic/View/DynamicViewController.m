@@ -69,28 +69,28 @@
     
     self.tableView.loading = YES;
     __weak typeof(self) weakSelf = self;
-    [self.requestViewModel xy_viewModelWithConfigRequest:^(id requestItem) {
+    
+    [self.requestViewModel xy_viewModelWithConfigRequest:^(id<XYRequestProtocol> requestItem) {
         DynamicRequestItem *item = (DynamicRequestItem *)requestItem;
         item.requestType = requesType;
-    }
-                                                progress:nil
-                                                 success:^(id responseObject) {
-                                                     
-                                                     [weakSelf.tableViewModel getDataSourceWithRequestType:requesType dataSourceBlock:^id{
-                                                         return responseObject;
-                                                     } completion:^{
-                                                         weakSelf.tableView.loading = NO;
-                                                         [weakSelf.tableView reloadData];
-                                                         [weakSelf.tableView.mj_header endRefreshing];
-                                                         [weakSelf.tableView.mj_footer endRefreshing];
-                                                     }];
-                                                     
-                                                 } failure:^(NSError *error) {
-                                                     weakSelf.tableView.loading = NO;
-                                                     [weakSelf.tableView.mj_header endRefreshing];
-                                                     [weakSelf.tableView.mj_footer endRefreshing];
-                                                     NSLog(@"%@", error.localizedDescription);
-                                                 }];
+    } progress:^(NSProgress *progress) {
+        NSLog(@"%@", progress);
+    } success:^(id responseObject) {
+        [weakSelf.tableViewModel getDataSourceWithRequestType:requesType dataSourceBlock:^id{
+            return responseObject;
+        } completion:^{
+            weakSelf.tableView.loading = NO;
+            [weakSelf.tableView reloadData];
+            [weakSelf.tableView.mj_header endRefreshing];
+            [weakSelf.tableView.mj_footer endRefreshing];
+        }];
+    } failure:^(NSError *error) {
+        weakSelf.tableView.loading = NO;
+        [weakSelf.tableView.mj_header endRefreshing];
+        [weakSelf.tableView.mj_footer endRefreshing];
+        NSLog(@"%@", error.localizedDescription);
+    }];
+    
 }
 
 
@@ -141,6 +141,7 @@
 - (void)clearDataSource {
     [self.tableViewModel removeAllObjctFromDataSource];
     [self.tableView reloadData];
+    [[SDImageCache sharedImageCache] setValue:nil forKey:@"memCache"];
 }
 
 

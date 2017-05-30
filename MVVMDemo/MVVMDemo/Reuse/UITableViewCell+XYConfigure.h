@@ -17,9 +17,9 @@
 + (void)xy_registerTableViewCell:(UITableView *)tableView classIdentifier:(NSString *)identifier;
 
 /// 根据model配置UITableViewCell，设置UITableViewCell的内容
-- (void)xy_config:(UITableViewCell *)cell model:(id)model indexPath:(NSIndexPath *)indexPath;
+- (void)xy_configCellByModel:(id)model indexPath:(NSIndexPath *)indexPath;
 /// 根据viewModel配置UITableViewCell， 设置UITableViewCell的内容
-- (void)xy_config:(UITableViewCell *)cell viewModel:(id<XYViewModelProtocol>)viewModel indexPath:(NSIndexPath *)indexPath;
+- (void)xy_configCellByViewModel:(id<XYViewModelProtocol>)viewModel indexPath:(NSIndexPath *)indexPath;
 /// 获取自定义对象cell的高度（已集成UITableView+FDTemplateLayoutCell， 现在创建的cell自动计算高度）
 - (CGFloat)xy_getCellHeightWithModel:(id)model indexPath:(NSIndexPath *)indexPath;
 @end

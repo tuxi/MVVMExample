@@ -28,7 +28,7 @@ static NSString * const SecondCellIdentifier = @"SecondTableViewCell";
     [UITableViewCell xy_registerTableViewCell:tableView nibIdentifier:SecondCellIdentifier];
 }
 
-- (void)getDataSourceBlock:(NSArray *(^)())dataSource completion:(void (^)())completion {
+- (void)getDataSourceBlock:(id (^)())dataSource completion:(void (^)())completion {
     if (dataSource) {
         self.dataList = dataSource();
         if (completion) {
@@ -47,7 +47,7 @@ static NSString * const SecondCellIdentifier = @"SecondTableViewCell";
     
     id item = self.dataList[indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SecondCellIdentifier forIndexPath:indexPath];
-    [cell xy_config:cell model:item indexPath:indexPath];
+    [cell xy_configCellByModel:item indexPath:indexPath];
     return cell;
 }
 
@@ -55,7 +55,7 @@ static NSString * const SecondCellIdentifier = @"SecondTableViewCell";
     id item = self.dataList[indexPath.row];
     
     return [tableView fd_heightForCellWithIdentifier:SecondCellIdentifier cacheByIndexPath:indexPath configuration:^(id cell) {
-        [cell xy_config:cell model:item indexPath:indexPath];
+        [cell xy_configCellByModel:item indexPath:indexPath];
     }];
 }
 

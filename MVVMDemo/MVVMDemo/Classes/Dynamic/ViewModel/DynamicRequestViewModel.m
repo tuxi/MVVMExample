@@ -24,8 +24,7 @@
 {
     self = [super init];
     if (self) {
-//        _requestPage = 1;
-//        _shouldRemoveDataSourceWhenRequestNewData = YES;
+        
     }
     return self;
 }
@@ -57,7 +56,7 @@
     }
     NSURLSessionTask *task = [[XYNetworkRequest sharedInstance]
                               sendRequest:weakSelf.item
-                              progress:nil success:^(id responseObject) {
+                              progress:progress success:^(id responseObject) {
                                   
                                   NSMutableArray<DynamicItem *> *arrayList = [NSMutableArray array];
                                   

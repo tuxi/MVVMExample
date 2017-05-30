@@ -47,7 +47,7 @@
 
 
 /// 通过模型，更新子控件
-- (void)xy_config:(UITableViewCell *)cell model:(id)model indexPath:(NSIndexPath *)indexPath {
+- (void)xy_configCellByModel:(id)model indexPath:(NSIndexPath *)indexPath {
     
     @autoreleasepool {
         DynamicItem *item = (DynamicItem *)model;

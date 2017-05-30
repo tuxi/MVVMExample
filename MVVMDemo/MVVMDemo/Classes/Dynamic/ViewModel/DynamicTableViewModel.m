@@ -75,7 +75,7 @@ static NSString *const myCellIdentifier = @"DynamicViewCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     DynamicViewCell *cell = [tableView dequeueReusableCellWithIdentifier:myCellIdentifier forIndexPath:indexPath];
-    [cell xy_config:cell model:[self itemAtIndexPath:indexPath] indexPath:indexPath];
+    [cell xy_configCellByModel:[self itemAtIndexPath:indexPath] indexPath:indexPath];
     return cell;
 }
 

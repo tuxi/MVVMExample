@@ -25,11 +25,11 @@
 }
 
 #pragma mark - Rewrite these func in SubClass !
-- (void)xy_config:(UITableViewCell *)cell model:(id)model indexPath:(NSIndexPath *)indexPath {
+- (void)xy_configCellByModel:(id)model indexPath:(NSIndexPath *)indexPath {
     /// Rewrite these func in SubClass !
 }
 
-- (void)xy_config:(UITableViewCell *)cell viewModel:(id<XYViewModelProtocol>)viewModel indexPath:(NSIndexPath *)indexPath {
+- (void)xy_configCellByViewModel:(id<XYViewModelProtocol>)viewModel indexPath:(NSIndexPath *)indexPath {
     /// Rewrite these func in SubClass !
 }
 
