@@ -9,16 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "XYViewModelProtocol.h"
 #import "XYViewManagerProtocol.h"
-#import "XYViewProtocol.h"
-#import "XYMediator.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 typedef _Nonnull id (^ViewModelBlock)();
 
-typedef void (^ViewMangerInfosBlock)();
-
-typedef void (^ViewModelInfosBlock)();
 
 @interface NSObject (XYProperties)
 
@@ -32,22 +27,8 @@ typedef void (^ViewModelInfosBlock)();
 @property (nullable, nonatomic, weak) id<XYViewManagerProtocol> viewMangerDelegate;
 
 
-@property (nonatomic, copy) ViewMangerInfosBlock viewMangerInfosBlock;
-
 
 @property (nullable, nonatomic, weak) id<XYViewModelProtocol> viewModelDelegate;
-
-
-@property (nonatomic, copy) ViewModelInfosBlock viewModelInfosBlock;
-
-/// 传递者
-@property (nonatomic, strong) XYMediator *xy_mediator;
-
-/// 传递的信息
-@property (nonatomic, strong) NSDictionary *xy_viewMangerInfos;
-
-/// 传递的信息
-@property (nonatomic, strong) NSDictionary *xy_viewModelInfos;
 
 
 @end

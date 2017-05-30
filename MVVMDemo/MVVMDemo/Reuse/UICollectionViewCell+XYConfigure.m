@@ -28,12 +28,13 @@
 }
 
 #pragma mark - Rewrite these func in SubClass !
-- (void)xy_configure:(UICollectionViewCell *)cell model:(id)model indexPath:(NSIndexPath *)indexPath
+- (void)xy_configureCellByModel:(id)model indexPath:(NSIndexPath *)indexPath
 {
     // Rewrite this func in SubClass !
 }
 
-- (void)xy_configure:(UICollectionViewCell *)cell viewModel:(id<XYViewModelProtocol>)viewModel indexPath:(NSIndexPath *)indexPath
+- (void)xy_configureCellByViewModel:(id<XYViewModelProtocol>)viewModel
+                          indexPath:(NSIndexPath *)indexPath 
 {
     // Rewrite this func in SubClass !
 }

@@ -51,11 +51,7 @@
     /// 获取数据
     [self xy_viewModelWithProgress:nil success:^(id responseObject) {
         
-        if (modelBlock) {
-            if (self.viewModelDelegate && [self.viewModelDelegate respondsToSelector:@selector(xy_viewModel:withInfos:)]) {
-                [self.viewModelDelegate xy_viewModel:self withInfos:@{@"info": @"你好，我是viewModel，数据加载成功啦"}];
-            }
-            
+        if (modelBlock) {            
             modelBlock([self getRandomData:responseObject]);
         }
         
@@ -70,6 +66,6 @@
 }
 
 - (void)xy_notify {
-    [self.xy_mediator notityViewManagerWithInfos:self.xy_viewModelInfos];
+    
 }
 @end

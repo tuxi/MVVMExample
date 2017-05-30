@@ -52,13 +52,6 @@
 }
 
 
-- (void)setXy_mediator:(XYMediator *)xy_mediator {
-    objc_setAssociatedObject(self, @selector(xy_mediator), xy_mediator, OBJC_ASSOCIATION_RETAIN);
-}
-- (XYMediator *)xy_mediator {
-    return objc_getAssociatedObject(self, @selector(xy_mediator));
-}
-
 - (void)setXy_viewMangerInfos:(NSDictionary *)xy_viewMangerInfos {
     objc_setAssociatedObject(self, @selector(xy_viewMangerInfos), xy_viewMangerInfos, OBJC_ASSOCIATION_COPY);
 }
@@ -89,6 +82,7 @@
         if (propertyValue) {
             resultDict[name] = propertyValue;
         } else {
+            resultDict[name] = @"";
             resultDict[name] = @"字典的key对应的value不能为nil";
         }
     }

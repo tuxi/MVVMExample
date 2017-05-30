@@ -68,12 +68,12 @@ typedef void (^progressBlock)(NSProgress * pgs);
 /**
  * 发送请求Block(在block内部配置request)
  *
- * @param   requestBlock  回调一个已经创建好的请求对象，外界只需要配置内部的request即可，不必再创建，配置完后return它
+ * @param   requestBlock  返回一个建好的请求对象，内部可以使用这个request对象请求数据
  * @param   progress  请求进度回调block
  * @param   success  请求成功回调block
  * @return  failure  请求失败回调block
  */
-- (NSURLSessionTask *)sendRequestBlock:(id (^)(id<XYRequestProtocol> request))requestBlock
+- (NSURLSessionTask *)sendRequestBlock:(id<XYRequestProtocol> (^)())requestBlock
                               progress:(progressBlock)progress
                                success:(successBlock)success
                                failure:(failureBlock)failure;

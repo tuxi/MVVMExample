@@ -54,46 +54,43 @@
         page++;
         self.item.page = @(page);
     }
-    NSURLSessionTask *task = [[XYNetworkRequest sharedInstance]
-                              sendRequest:weakSelf.item
-                              progress:progress success:^(id responseObject) {
-                                  
-                                  NSMutableArray<DynamicItem *> *arrayList = [NSMutableArray array];
-                                  
-                                  /// 将服务器请求的数据转换为模型，返回给外界使用
-                                  if (responseObject[@"data"]) {
-                                      if ([responseObject[@"data"][@"code"] isEqualToString:@"0"]) {
-                                          /// code为0，说明请求数据成功
-                                          for (id obj in responseObject[@"data"][@"list"]) {
-                                              if ([obj isKindOfClass:[NSDictionary class]]) {
-                                                  @autoreleasepool {
-                                                      if ([obj[@"content"] isKindOfClass:[NSDictionary class]] && [obj[@"content"] count]) {
-                                                          [arrayList addObject:[DynamicItem itemWithDict:obj]];
-                                                      }
-                                                  }
-                                              }
-                                          }
-                                      }
-                                  }
-                                  
-                                  if (success) {
-                                      success(arrayList);
-                                  }
-                                  [arrayList removeAllObjects];
-                                  arrayList = nil;
-                                  
-                              }
-                              failure:^(NSError *error) {
-                                  NSInteger page = [weakSelf.item.page integerValue];
-                                  if (page > 0) {
-                                      page--;
-                                  }
-                                  if (failure) {
-                                      failure(error);
-                                  }
-                              }];
     
-    return task;
+    return [[XYNetworkRequest sharedInstance] sendRequestBlock:^id<XYRequestProtocol> {
+        return weakSelf.item;
+    }  progress:progress success:^(id responseObject) {
+        NSMutableArray<DynamicItem *> *arrayList = [NSMutableArray array];
+        
+        /// 将服务器请求的数据转换为模型，返回给外界使用
+        if (responseObject[@"data"]) {
+            if ([responseObject[@"data"][@"code"] isEqualToString:@"0"]) {
+                /// code为0，说明请求数据成功
+                for (id obj in responseObject[@"data"][@"list"]) {
+                    if ([obj isKindOfClass:[NSDictionary class]]) {
+                        @autoreleasepool {
+                            if ([obj[@"content"] isKindOfClass:[NSDictionary class]] && [obj[@"content"] count]) {
+                                [arrayList addObject:[DynamicItem itemWithDict:obj]];
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        if (success) {
+            success(arrayList);
+        }
+        [arrayList removeAllObjects];
+        arrayList = nil;
+    } failure:^(NSError *error) {
+        NSInteger page = [weakSelf.item.page integerValue];
+        if (page > 0) {
+            page--;
+        }
+        if (failure) {
+            failure(error);
+        }
+
+    }];
 }
 
 - (void)dealloc {

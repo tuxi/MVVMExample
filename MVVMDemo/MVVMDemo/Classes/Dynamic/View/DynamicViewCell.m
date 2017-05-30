@@ -9,7 +9,6 @@
 #import "DynamicViewCell.h"
 #import "UIImageView+WebCache.h"
 #import "DynamicItem.h"
-#import "UIView+Events.h"
 #import "XYImageViewer.h"
 #import "UICollectionViewCell+XYConfigure.h"
 
@@ -244,7 +243,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DynamicPicContentViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([collectionView class]) forIndexPath:indexPath];
     
-    [cell xy_configure:cell model:self.dataSource[indexPath.item] indexPath:indexPath];
+    [cell xy_configureCellByModel:self.dataSource[indexPath.item] indexPath:indexPath];
     
     return cell;
 }
@@ -298,7 +297,7 @@
     UIImageView *_imageView;
 }
 
-- (void)xy_configure:(UICollectionViewCell *)cell model:(id)model indexPath:(NSIndexPath *)indexPath {
+- (void)xy_configureCellByModel:(id)model indexPath:(NSIndexPath *)indexPath {
     if (![model isKindOfClass:[NSString class]]) {
         return;
     }

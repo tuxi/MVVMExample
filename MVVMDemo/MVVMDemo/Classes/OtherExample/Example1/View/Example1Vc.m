@@ -9,11 +9,9 @@
 #import "Example1Vc.h"
 #import "FirstView.h"
 #import "FirstViewManager.h"
-#import "UIView+Events.h"
 #import "SUIUtils.h"
 #import "FirstViewModel.h"
 #import "NSObject+XYProperties.h"
-#import "XYMediator.h"
 #import "UIView+XYConfigure.h"
 
 @interface Example1Vc ()
@@ -32,30 +30,11 @@
     [super viewDidLoad];
     
     [self setupUI];
-    
-    /// 设置firstView的事件处理者代理为viewManager  (代理的方式)
-    [self.firstView xy_viewWithViewManager:self.viewManager];
-    /// 设置firstView的事件处理者block  (block的方式)
-    self.firstView.viewEventsBlock = [self.viewManager xy_viewManagerWithViewEventBlockOfInfos:@{@"view": self.firstView}];
+
     /// viewModel和viewManager之间通过代理方式交互
     self.viewManager.viewMangerDelegate = self.viewModel;
     self.viewModel.viewModelDelegate = self.viewManager;
-    
-    /// viewModel和viewManager之间通过block方式交互
-    self.viewManager.viewModelInfosBlock = [self.viewModel xy_viewModelWithViewMangerBlockOfInfos:@{@"info": @"viewManager"}];
-    
-    /// 中介者传值
-    XYMediator *mediator = [XYMediator mediatorWithViewModel:self.viewModel viewManager:self.viewManager];
-    self.viewManager.xy_mediator = mediator;
-    self.viewModel.xy_mediator = mediator;
-    
-    self.viewManager.xy_viewMangerInfos = @{@"xxxx": @"11111"};
-    [self.viewManager xy_notify];
-    NSLog(@"%@", self.viewModel.xy_viewModelInfos);
-    
-    self.viewModel.xy_viewModelInfos = @{@"ooooo": @"2222222"};
-    [self.viewModel xy_notify];
-    NSLog(@"%@", self.viewManager.xy_viewMangerInfos);
+
 }
 
 - (void)didReceiveMemoryWarning {

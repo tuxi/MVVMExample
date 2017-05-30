@@ -18,11 +18,9 @@
 		1827C2141E4E21620080AB27 /* NSObject+XYRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C2001E4E21620080AB27 /* NSObject+XYRequest.m */; };
 		1827C2151E4E21620080AB27 /* UICollectionViewCell+XYConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C2021E4E21620080AB27 /* UICollectionViewCell+XYConfigure.m */; };
 		1827C2161E4E21620080AB27 /* UITableViewCell+XYConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C2041E4E21620080AB27 /* UITableViewCell+XYConfigure.m */; };
-		1827C2171E4E21620080AB27 /* UIView+Events.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C2061E4E21620080AB27 /* UIView+Events.m */; };
 		1827C2181E4E21620080AB27 /* UIView+XYConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C2081E4E21620080AB27 /* UIView+XYConfigure.m */; };
 		1827C2191E4E21620080AB27 /* XYNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C20A1E4E21620080AB27 /* XYNetworkRequest.m */; };
 		1827C21A1E4E21620080AB27 /* XYDBUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C20C1E4E21620080AB27 /* XYDBUtil.m */; };
-		1827C21B1E4E21620080AB27 /* XYMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C20E1E4E21620080AB27 /* XYMediator.m */; };
 		187CA6FB1EDD64050003A4EF /* UIScrollView+NoDataPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 187CA6FA1EDD64050003A4EF /* UIScrollView+NoDataPlaceholder.m */; };
 		18C85FBB1E50AD3B00C615EA /* DynamicItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C85E661E50AD3B00C615EA /* DynamicItem.m */; };
 		18C85FBC1E50AD3B00C615EA /* DynamicRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C85E681E50AD3B00C615EA /* DynamicRequestItem.m */; };
@@ -197,20 +195,15 @@
 		1827C2021E4E21620080AB27 /* UICollectionViewCell+XYConfigure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewCell+XYConfigure.m"; sourceTree = "<group>"; };
 		1827C2031E4E21620080AB27 /* UITableViewCell+XYConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+XYConfigure.h"; sourceTree = "<group>"; };
 		1827C2041E4E21620080AB27 /* UITableViewCell+XYConfigure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+XYConfigure.m"; sourceTree = "<group>"; };
-		1827C2051E4E21620080AB27 /* UIView+Events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Events.h"; sourceTree = "<group>"; };
-		1827C2061E4E21620080AB27 /* UIView+Events.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Events.m"; sourceTree = "<group>"; };
 		1827C2071E4E21620080AB27 /* UIView+XYConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XYConfigure.h"; sourceTree = "<group>"; };
 		1827C2081E4E21620080AB27 /* UIView+XYConfigure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XYConfigure.m"; sourceTree = "<group>"; };
 		1827C2091E4E21620080AB27 /* XYNetworkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYNetworkRequest.h; sourceTree = "<group>"; };
 		1827C20A1E4E21620080AB27 /* XYNetworkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYNetworkRequest.m; sourceTree = "<group>"; };
 		1827C20B1E4E21620080AB27 /* XYDBUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYDBUtil.h; sourceTree = "<group>"; };
 		1827C20C1E4E21620080AB27 /* XYDBUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYDBUtil.m; sourceTree = "<group>"; };
-		1827C20D1E4E21620080AB27 /* XYMediator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYMediator.h; sourceTree = "<group>"; };
-		1827C20E1E4E21620080AB27 /* XYMediator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYMediator.m; sourceTree = "<group>"; };
 		1827C20F1E4E21620080AB27 /* XYRequestProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYRequestProtocol.h; sourceTree = "<group>"; };
 		1827C2101E4E21620080AB27 /* XYViewManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYViewManagerProtocol.h; sourceTree = "<group>"; };
 		1827C2111E4E21620080AB27 /* XYViewModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYViewModelProtocol.h; sourceTree = "<group>"; };
-		1827C2121E4E21620080AB27 /* XYViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYViewProtocol.h; sourceTree = "<group>"; };
 		187CA6F91EDD64050003A4EF /* UIScrollView+NoDataPlaceholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+NoDataPlaceholder.h"; sourceTree = "<group>"; };
 		187CA6FA1EDD64050003A4EF /* UIScrollView+NoDataPlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+NoDataPlaceholder.m"; sourceTree = "<group>"; };
 		18C85E651E50AD3B00C615EA /* DynamicItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicItem.h; sourceTree = "<group>"; };
@@ -572,20 +565,15 @@
 				1827C2021E4E21620080AB27 /* UICollectionViewCell+XYConfigure.m */,
 				1827C2031E4E21620080AB27 /* UITableViewCell+XYConfigure.h */,
 				1827C2041E4E21620080AB27 /* UITableViewCell+XYConfigure.m */,
-				1827C2051E4E21620080AB27 /* UIView+Events.h */,
-				1827C2061E4E21620080AB27 /* UIView+Events.m */,
 				1827C2071E4E21620080AB27 /* UIView+XYConfigure.h */,
 				1827C2081E4E21620080AB27 /* UIView+XYConfigure.m */,
 				1827C2091E4E21620080AB27 /* XYNetworkRequest.h */,
 				1827C20A1E4E21620080AB27 /* XYNetworkRequest.m */,
 				1827C20B1E4E21620080AB27 /* XYDBUtil.h */,
 				1827C20C1E4E21620080AB27 /* XYDBUtil.m */,
-				1827C20D1E4E21620080AB27 /* XYMediator.h */,
-				1827C20E1E4E21620080AB27 /* XYMediator.m */,
 				1827C20F1E4E21620080AB27 /* XYRequestProtocol.h */,
 				1827C2101E4E21620080AB27 /* XYViewManagerProtocol.h */,
 				1827C2111E4E21620080AB27 /* XYViewModelProtocol.h */,
-				1827C2121E4E21620080AB27 /* XYViewProtocol.h */,
 				18FD5A731E50841900ECEEE6 /* XYTableViewModelProtocol.h */,
 				18FD5A741E5094D800ECEEE6 /* XYCollectionViewModelProtocol.h */,
 			);
@@ -1625,7 +1613,6 @@
 				18C8600B1E50AD3B00C615EA /* UIImageView+HighlightedWebCache.m in Sources */,
 				18C860081E50AD3B00C615EA /* UIButton+WebCache.m in Sources */,
 				18C85FC21E50AD3B00C615EA /* Foundation+Log.m in Sources */,
-				1827C2171E4E21620080AB27 /* UIView+Events.m in Sources */,
 				18C85FEC1E50AD3B00C615EA /* MJRefreshFooter.m in Sources */,
 				18C85FC01E50AD3B00C615EA /* DynamicTableViewModel.m in Sources */,
 				18C860051E50AD3B00C615EA /* SDWebImageDownloaderOperation.m in Sources */,
@@ -1669,7 +1656,6 @@
 				18C85FE21E50AD3B00C615EA /* NSObject+MJClass.m in Sources */,
 				18C85FEB1E50AD3B00C615EA /* MJRefreshComponent.m in Sources */,
 				18C8601E1E50AD3B00C615EA /* SUITool+Delay.m in Sources */,
-				1827C21B1E4E21620080AB27 /* XYMediator.m in Sources */,
 				18C860441E50AD3B00C615EA /* SecondViewModel.m in Sources */,
 				18C860341E50AD3B00C615EA /* MeViewController.m in Sources */,
 				18C860361E50AD3B00C615EA /* AppDelegate.m in Sources */,

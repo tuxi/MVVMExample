@@ -94,12 +94,11 @@ static id _instance;
 }
 
 
-- (NSURLSessionTask *)sendRequestBlock:(id (^)(id<XYRequestProtocol> request))requestBlock progress:(progressBlock)progress success:(successBlock)success failure:(failureBlock)failure {
+- (NSURLSessionTask *)sendRequestBlock:(id<XYRequestProtocol> (^)())requestBlock progress:(progressBlock)progress success:(successBlock)success failure:(failureBlock)failure {
     
     if (requestBlock) {
-        NSObject *requestObj = [NSObject new];
-        //NSLog(@"item==%@", requestObj);
-        return [self sendRequest:requestBlock((id<XYRequestProtocol>)requestObj) progress:progress success:success failure:failure];
+        
+        return [self sendRequest:requestBlock() progress:progress success:success failure:failure];
     } else {
         return nil;
     }

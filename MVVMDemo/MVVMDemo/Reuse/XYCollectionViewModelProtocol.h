@@ -13,8 +13,13 @@
 @required
 /// 传入一个tableView，内部设置其代理和数据源对象, 及注册cell
 - (void)prepareCollectionView:(UICollectionView *)collectionView;
+
+@optional
 /// 获取模型数据源
 - (void)getDataSourceBlock:(id (^)())dataSource completion:(void(^)())completion;
+
+/// 获取模型数据源
+- (void)getDataSourceWithRequestType:(BOOL)isNewData dataSourceBlock:(id (^)())dataSource completion:(void(^)())completion;
 
 - (id)dataSource;
 

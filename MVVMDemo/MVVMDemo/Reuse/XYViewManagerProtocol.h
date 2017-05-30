@@ -7,15 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "XYViewProtocol.h"
 
-
-typedef void (^ViewEventsBlock)( );
-
-/**
- *  将自己的信息返回给ViewModel的block
- */
-typedef void (^ViewModelInfosBlock)( );
 
 /**
  *  将自己的信息返回给ViewManger的block
@@ -80,28 +72,5 @@ typedef void (^ViewMangerInfosBlock)( );
  *  将模型数据传递给viewManager
  */
 - (void)xy_viewManagerWithModel:(NSDictionary *(^)())block;
-
-/**
- *  处理viewBlock的事件
- */
-- (void(^)())xy_viewManagerWithViewEventBlockOfInfos:(NSDictionary *)infos;
-
-/**
- *  处理ViewModelInfosBlock
- */
-- (ViewModelInfosBlock)xy_viewMangerWithViewModelBlockOfInfos:(NSDictionary *)infos;
-
-/**
- *  处理ViewMangerInfosBlock
- */
-- (ViewMangerInfosBlock)xy_viewMangerWithOtherViewMangerBlockOfInfos:(NSDictionary *)infos;
-
-/**
- *  将viewManger中的信息通过代理传递给ViewModel
- *
- *  @param viewManger   viewManger自己
- *  @param infos 描述信息
- */
-- (void)xy_viewManger:(id)viewManger withInfos:(NSDictionary *)infos;
 
 @end

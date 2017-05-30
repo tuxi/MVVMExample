@@ -81,22 +81,5 @@ typedef void(^RequestItemBlock)(id<XYRequestProtocol> request);
  */
 - (void)xy_viewModelWithModelBlcok:(void (^)(id model))modelBlock;
 
-/**
- *  处理ViewMangerInfosBlock
- */
-- (ViewMangerInfosBlock)xy_viewModelWithViewMangerBlockOfInfos:(NSDictionary *)infos;
-
-/**
- *  处理ViewModelInfosBlock
- */
-- (ViewModelInfosBlock)xy_viewModelWithOtherViewModelBlockOfInfos:(NSDictionary *)infos;
-
-/**
- *  将viewModel中的信息通过代理传递给ViewManger
- *
- *  @param viewModel   viewModel自己
- *  @param infos 描述信息
- */
-- (void)xy_viewModel:(id)viewModel withInfos:(NSDictionary *)infos;
 
 @end

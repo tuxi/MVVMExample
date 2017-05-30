@@ -8,9 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "XYViewManagerProtocol.h"
-#import "XYViewProtocol.h"
 #import "XYViewModelProtocol.h"
 
-@interface FirstViewManager : NSObject<XYViewManagerProtocol, XYViewProtocol, XYViewModelProtocol>
+@interface FirstViewManager : NSObject<XYViewManagerProtocol, XYViewModelProtocol>
 
 @end
