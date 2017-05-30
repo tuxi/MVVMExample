@@ -22,6 +22,7 @@
 		1827C2191E4E21620080AB27 /* XYNetworkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C20A1E4E21620080AB27 /* XYNetworkRequest.m */; };
 		1827C21A1E4E21620080AB27 /* XYDBUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C20C1E4E21620080AB27 /* XYDBUtil.m */; };
 		1827C21B1E4E21620080AB27 /* XYMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C20E1E4E21620080AB27 /* XYMediator.m */; };
+		187CA6FB1EDD64050003A4EF /* UIScrollView+NoDataPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 187CA6FA1EDD64050003A4EF /* UIScrollView+NoDataPlaceholder.m */; };
 		18C85FBB1E50AD3B00C615EA /* DynamicItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C85E661E50AD3B00C615EA /* DynamicItem.m */; };
 		18C85FBC1E50AD3B00C615EA /* DynamicRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C85E681E50AD3B00C615EA /* DynamicRequestItem.m */; };
 		18C85FBD1E50AD3B00C615EA /* DynamicViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C85E6B1E50AD3B00C615EA /* DynamicViewCell.m */; };
@@ -207,6 +208,8 @@
 		1827C2101E4E21620080AB27 /* XYViewManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYViewManagerProtocol.h; sourceTree = "<group>"; };
 		1827C2111E4E21620080AB27 /* XYViewModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYViewModelProtocol.h; sourceTree = "<group>"; };
 		1827C2121E4E21620080AB27 /* XYViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYViewProtocol.h; sourceTree = "<group>"; };
+		187CA6F91EDD64050003A4EF /* UIScrollView+NoDataPlaceholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+NoDataPlaceholder.h"; sourceTree = "<group>"; };
+		187CA6FA1EDD64050003A4EF /* UIScrollView+NoDataPlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+NoDataPlaceholder.m"; sourceTree = "<group>"; };
 		18C85E651E50AD3B00C615EA /* DynamicItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicItem.h; sourceTree = "<group>"; };
 		18C85E661E50AD3B00C615EA /* DynamicItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicItem.m; sourceTree = "<group>"; };
 		18C85E671E50AD3B00C615EA /* DynamicRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicRequestItem.h; sourceTree = "<group>"; };
@@ -584,6 +587,15 @@
 				18FD5A741E5094D800ECEEE6 /* XYCollectionViewModelProtocol.h */,
 			);
 			path = Reuse;
+			sourceTree = "<group>";
+		};
+		187CA6F81EDD64050003A4EF /* NODataPlaceholderView */ = {
+			isa = PBXGroup;
+			children = (
+				187CA6F91EDD64050003A4EF /* UIScrollView+NoDataPlaceholder.h */,
+				187CA6FA1EDD64050003A4EF /* UIScrollView+NoDataPlaceholder.m */,
+			);
+			path = NODataPlaceholderView;
 			sourceTree = "<group>";
 		};
 		18C85E621E50AD3B00C615EA /* Classes */ = {
@@ -1369,6 +1381,7 @@
 		18C85FB01E50AD3B00C615EA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				187CA6F81EDD64050003A4EF /* NODataPlaceholderView */,
 				18C85FB11E50AD3B00C615EA /* Loading */,
 				18C85FB61E50AD3B00C615EA /* Refresh */,
 			);
@@ -1515,6 +1528,7 @@
 				180536361E5800540070D26E /* HomePageRequestItem.m in Sources */,
 				18C860351E50AD3B00C615EA /* MessageViewController.m in Sources */,
 				18C85FEE1E50AD3B00C615EA /* MJRefreshAutoGifFooter.m in Sources */,
+				187CA6FB1EDD64050003A4EF /* UIScrollView+NoDataPlaceholder.m in Sources */,
 				18C860461E50AD3B00C615EA /* XYLoadingView.m in Sources */,
 				1805365F1E5861A60070D26E /* MessageViewModel.m in Sources */,
 				1827C0581E4C741D0080AB27 /* main.m in Sources */,
