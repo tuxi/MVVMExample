@@ -10,5 +10,6 @@
 
 @interface DynamicTableViewModel : NSObject<XYTableViewModelProtocol>
 
+@property (nonatomic, assign) BOOL shouldRemoveDataSourceWhenRequestNewData;
 
 @end

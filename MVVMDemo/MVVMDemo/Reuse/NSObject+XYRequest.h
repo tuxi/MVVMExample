@@ -18,7 +18,13 @@ typedef NS_ENUM(NSUInteger, RequestMethod) {
     
 };
 
+typedef NS_ENUM(NSInteger, RequestDataType) {
+    RequestDataTypeMore,
+    RequestDataTypeNew,
+};
+
 @class XYRequestFileConfig;
+
 @interface NSObject (XYRequest)
 
 /// scheme 请求协议(eg: http, https, ftp)
@@ -47,6 +53,9 @@ typedef NS_ENUM(NSUInteger, RequestMethod) {
 
 /// xy_fileConfigList集合，当有多个时，就是有多个文件要上传,当使用了此属性时，就不要使用xy_fileConfig啦
 @property (nonatomic, strong) NSArray<XYRequestFileConfig *> *xy_fileConfigList;
+
+/// 请求数据的类型是，请求最新的数据，还是加载更多
+@property (nonatomic, assign) RequestDataType requestType;
 
 @end
 

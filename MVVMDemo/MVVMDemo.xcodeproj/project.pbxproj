@@ -12,6 +12,7 @@
 		1805365C1E585EB20070D26E /* MessageRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1805365B1E585EB20070D26E /* MessageRequestItem.m */; };
 		1805365F1E5861A60070D26E /* MessageViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1805365E1E5861A60070D26E /* MessageViewModel.m */; };
 		180536621E5878F30070D26E /* UploadRequestItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 180536611E5878F30070D26E /* UploadRequestItem.m */; };
+		181D11B11EDDA5EB00532D5D /* UITableView+NoDataPlaceholderExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 181D11B01EDDA5EB00532D5D /* UITableView+NoDataPlaceholderExtend.m */; };
 		1827C0581E4C741D0080AB27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C0571E4C741D0080AB27 /* main.m */; };
 		1827C2131E4E21620080AB27 /* NSObject+XYProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C1FE1E4E21620080AB27 /* NSObject+XYProperties.m */; };
 		1827C2141E4E21620080AB27 /* NSObject+XYRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1827C2001E4E21620080AB27 /* NSObject+XYRequest.m */; };
@@ -184,6 +185,8 @@
 		1805365E1E5861A60070D26E /* MessageViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewModel.m; sourceTree = "<group>"; };
 		180536601E5878F30070D26E /* UploadRequestItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadRequestItem.h; sourceTree = "<group>"; };
 		180536611E5878F30070D26E /* UploadRequestItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadRequestItem.m; sourceTree = "<group>"; };
+		181D11AF1EDDA5EB00532D5D /* UITableView+NoDataPlaceholderExtend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+NoDataPlaceholderExtend.h"; sourceTree = "<group>"; };
+		181D11B01EDDA5EB00532D5D /* UITableView+NoDataPlaceholderExtend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+NoDataPlaceholderExtend.m"; sourceTree = "<group>"; };
 		1827C0531E4C741D0080AB27 /* MVVMDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1827C0571E4C741D0080AB27 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1827C1FD1E4E21620080AB27 /* NSObject+XYProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+XYProperties.h"; sourceTree = "<group>"; };
@@ -594,6 +597,8 @@
 			children = (
 				187CA6F91EDD64050003A4EF /* UIScrollView+NoDataPlaceholder.h */,
 				187CA6FA1EDD64050003A4EF /* UIScrollView+NoDataPlaceholder.m */,
+				181D11AF1EDDA5EB00532D5D /* UITableView+NoDataPlaceholderExtend.h */,
+				181D11B01EDDA5EB00532D5D /* UITableView+NoDataPlaceholderExtend.m */,
 			);
 			path = NODataPlaceholderView;
 			sourceTree = "<group>";
@@ -1649,6 +1654,7 @@
 				18C860281E50AD3B00C615EA /* UIStoryboardSegue+SUIAdditions.m in Sources */,
 				18C860251E50AD3B00C615EA /* UILabel+SUIAdditions.m in Sources */,
 				18C85FCC1E50AD3B00C615EA /* AFAutoPurgingImageCache.m in Sources */,
+				181D11B11EDDA5EB00532D5D /* UITableView+NoDataPlaceholderExtend.m in Sources */,
 				18C8600C1E50AD3B00C615EA /* UIImageView+WebCache.m in Sources */,
 				18C85FBD1E50AD3B00C615EA /* DynamicViewCell.m in Sources */,
 				18C860181E50AD3B00C615EA /* NSString+SUICrypto.m in Sources */,

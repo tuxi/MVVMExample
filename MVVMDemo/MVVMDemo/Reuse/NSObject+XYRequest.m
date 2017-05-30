@@ -80,4 +80,12 @@
     return objc_getAssociatedObject(self, @selector(xy_fileConfigList));
 }
 
+- (RequestDataType)requestType {
+    return [objc_getAssociatedObject(self, @selector(requestType)) integerValue];
+}
+
+- (void)setRequestType:(RequestDataType)requestType {
+    objc_setAssociatedObject(self, @selector(requestType), @(requestType), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 @end

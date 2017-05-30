@@ -15,8 +15,7 @@
 
 @end
 
-@interface DynamicPicContentView : UICollectionView
-{
+@interface DynamicPicContentView : UICollectionView {
 @public
     DynamicPicContentViewModel *_viewModel;
 }

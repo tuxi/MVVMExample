@@ -10,6 +10,7 @@
 #import "XYNetworkRequest.h"
 #import "NSObject+XYRequest.h"
 
+
 /**
  *  请求成功block
  */
@@ -34,8 +35,10 @@ typedef void (^ViewMangerInfosBlock)();
  *  将自己的信息返回给ViewModel的block
  */
 typedef void (^ViewModelInfosBlock)();
-
-
+/**
+ *  配置请求参数的block
+ */
+typedef void(^RequestItemBlock)(id<XYRequestProtocol> request);
 
 
 @protocol XYViewModelProtocol <NSObject>
@@ -68,7 +71,7 @@ typedef void (^ViewModelInfosBlock)();
  * @param   success  请求成功回调
  * @return  failure  请求失败回调
  */
-- (NSURLSessionTask *)xy_viewModelWithConfigRequest:(void (^)(id<XYRequestProtocol> request))requestBlock
+- (NSURLSessionTask *)xy_viewModelWithConfigRequest:(RequestItemBlock)requestBlock
                                            progress:(progressBlock)progress
                                             success:(successBlock)success
                                             failure:(failureBlock)failure;

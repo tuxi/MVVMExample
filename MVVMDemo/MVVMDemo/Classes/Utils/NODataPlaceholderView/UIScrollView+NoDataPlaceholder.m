@@ -207,6 +207,7 @@ static NSString * const NoDataPlaceholderBackgroundImageViewAnimationKey = @"NoD
 
 // 是否符合显示
 - (BOOL)xy_noDataPlacehodler_canDisplay {
+    // NSLog(@"%@", self.noDataPlaceholderDataSource);
     if (self.noDataPlaceholderDataSource && [self.noDataPlaceholderDataSource conformsToProtocol:@protocol(NoDataPlaceholderDataSource) ]) {
         if ([self isKindOfClass:[UITableView class]] || [self isKindOfClass:[UICollectionView class]] || [self isKindOfClass:[UIScrollView class]]) {
             return YES;

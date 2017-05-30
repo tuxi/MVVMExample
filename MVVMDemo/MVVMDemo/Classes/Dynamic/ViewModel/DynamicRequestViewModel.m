@@ -20,6 +20,16 @@
 
 @implementation DynamicRequestViewModel
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+//        _requestPage = 1;
+//        _shouldRemoveDataSourceWhenRequestNewData = YES;
+    }
+    return self;
+}
+
 - (DynamicRequestItem *)item {
     if (_item == nil) {
         _item = [DynamicRequestItem new];
@@ -36,9 +46,15 @@
     
     /// 将网络请求对象 通过requestItem回调给调用者对象使用，调用者根据请求修改此请求对象对应的参数，即可做到动态参数 请求服务器数据
     if (requestItem) {
-        requestItem(weakSelf.item);
+        requestItem(self.item);
     }
-    
+    if (self.item.requestType == RequestDataTypeNew) {
+        self.item.page = @1;
+    } else {
+        NSInteger page = [self.item.page integerValue];
+        page++;
+        self.item.page = @(page);
+    }
     NSURLSessionTask *task = [[XYNetworkRequest sharedInstance]
                               sendRequest:weakSelf.item
                               progress:nil success:^(id responseObject) {
@@ -69,6 +85,10 @@
                                   
                               }
                               failure:^(NSError *error) {
+                                  NSInteger page = [weakSelf.item.page integerValue];
+                                  if (page > 0) {
+                                      page--;
+                                  }
                                   if (failure) {
                                       failure(error);
                                   }

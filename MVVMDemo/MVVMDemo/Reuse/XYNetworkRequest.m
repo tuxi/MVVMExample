@@ -99,7 +99,7 @@ static id _instance;
     if (requestBlock) {
         NSObject *requestObj = [NSObject new];
         //NSLog(@"item==%@", requestObj);
-        return [self sendRequest:requestBlock(requestObj) progress:progress success:success failure:failure];
+        return [self sendRequest:requestBlock((id<XYRequestProtocol>)requestObj) progress:progress success:success failure:failure];
     } else {
         return nil;
     }

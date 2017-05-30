@@ -22,6 +22,15 @@ static NSString *const myCellIdentifier = @"DynamicViewCell";
 
 @implementation DynamicTableViewModel
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _shouldRemoveDataSourceWhenRequestNewData = YES;
+    }
+    return self;
+}
+
 #pragma mark - public
 - (void)prepareTableView:(UITableView *)tableView {
     tableView.delegate = self;
@@ -29,8 +38,12 @@ static NSString *const myCellIdentifier = @"DynamicViewCell";
     [DynamicViewCell xy_registerTableViewCell:tableView nibIdentifier:myCellIdentifier];
 }
 
-- (void)getDataSourceBlock:(id (^)())dataSource completion:(void (^)())completion {
+- (void)getDataSourceWithRequestType:(BOOL)isNewData dataSourceBlock:(id (^)())dataSource completion:(void (^)())completion {
     if (dataSource) {
+        
+        if (_shouldRemoveDataSourceWhenRequestNewData && isNewData) {
+            [self removeAllObjctFromDataSource];
+        }
         
         // 将模型数据添加到数组中
         NSArray *list = dataSource();
