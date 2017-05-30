@@ -29,7 +29,7 @@
 - (IBAction)jumpToTopicVc:(id)sender {
    }
 
-- (void)xy_configViewWithViewModel:(id<XYViewModelProtocol>)vm {
+- (void)xy_configViewByViewModel:(id<XYViewModelProtocol>)vm {
     
     /// 得到处理好的模型数据
     [vm xy_viewModelWithModelBlcok:^(id model) {

@@ -12,9 +12,9 @@
 @interface UIView (XYConfigure)
 
 /// 根据model配置view, 设置view的内容
-- (void)xy_configViewWithModel:(id)model;
+- (void)xy_configViewByModel:(id)model;
 
 /// 根据viewModel配置view，设置view的内容
-- (void)xy_configViewWithViewModel:(id<XYViewModelProtocol>)vm;
+- (void)xy_configViewByViewModel:(id<XYViewModelProtocol>)vm;
 
 @end

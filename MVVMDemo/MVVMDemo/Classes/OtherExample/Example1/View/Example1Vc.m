@@ -55,7 +55,7 @@
 - (IBAction)updateModelData:(id)sender {
     
     /// 根据viewModel配置view
-    [self.firstView xy_configViewWithViewModel:self.viewModel];
+    [self.firstView xy_configViewByViewModel:self.viewModel];
 }
 
 

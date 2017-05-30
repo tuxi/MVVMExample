@@ -10,12 +10,12 @@
 
 @implementation UIView (XYConfigure)
 
-- (void)xy_configViewWithModel:(id)model {
+- (void)xy_configViewByModel:(id)model {
 
     /// 这个方法需要重写
 }
 
-- (void)xy_configViewWithViewModel:(id<XYViewModelProtocol>)vm {
+- (void)xy_configViewByViewModel:(id<XYViewModelProtocol>)vm {
     /// 这个方法需要重写
 }
 
